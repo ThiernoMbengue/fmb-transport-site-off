@@ -1,0 +1,7 @@
+# Déploiement automatique sur Netlify : à chaque « git push », le site est reconstruit et vérifié.
+[build]
+  command = "node build.mjs && node tests/check.mjs"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"

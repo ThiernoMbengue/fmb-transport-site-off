@@ -1,0 +1,23 @@
+{
+  "name": "fmb-transport-site",
+  "version": "2.1.0",
+  "private": true,
+  "description": "Site web de FMB Transport (Dakar) — générateur statique sans dépendance.",
+  "type": "module",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "build": "node build.mjs",
+    "check": "node tests/check.mjs",
+    "test": "node build.mjs && node tests/check.mjs",
+    "dev": "node build.mjs && node tools/serve.mjs",
+    "images": "python3 tools/images.py",
+    "e2e": "node tests/e2e.cjs",
+    "audit:responsive": "node tests/audit-responsive.cjs",
+    "audit:lighthouse": "node tests/audit-lighthouse.mjs"
+  },
+  "devDependencies": {
+    "axe-core": "^4.10.0",
+    "lighthouse": "^12.0.0",
+    "playwright": "^1.48.0"
+  }
+}
