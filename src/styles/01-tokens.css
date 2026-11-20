@@ -1,0 +1,79 @@
+/* ==========================================================================
+   01 · JETONS DE DESIGN — source unique des couleurs, polices, espacements.
+   Modifier une valeur ici la change sur tout le site.
+   ========================================================================== */
+/* Polices variables auto-hébergées, réduites aux graisses réellement utilisées (texte 400–800, titres 700–800). */
+/* Polices variables auto-hébergées, réduites aux graisses réellement utilisées (texte 400–800, titres 700–800). */
+@font-face {
+  font-family: "Manrope";
+  src: url("../fonts/manrope-latin-wght-normal.woff2") format("woff2");
+  font-weight: 400 800; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("../fonts/bricolage-grotesque-latin-wght-normal.woff2") format("woff2");
+  font-weight: 700 800; font-style: normal; font-display: swap;
+}
+/* Polices de secours calées sur les métriques des polices du site : pendant le chargement, le texte occupe
+   exactement la même place → aucun saut de mise en page (CLS) quand la vraie police arrive. */
+@font-face { font-family: "Manrope Fallback"; src: local("Arial"), local("Helvetica Neue"), local("Liberation Sans"); size-adjust: 102.3%; ascent-override: 104.2%; descent-override: 29.3%; line-gap-override: 0%; }
+@font-face { font-family: "Bricolage Fallback"; src: local("Arial Bold"), local("Arial"), local("Liberation Sans Bold"); font-weight: 700; size-adjust: 101.7%; ascent-override: 91.4%; descent-override: 26.5%; line-gap-override: 0%; }
+:root {
+  /* Couleurs de marque (issues du logo FMB) */
+  --navy-950: #051526;
+  --navy-900: #071d33;
+  --navy-800: #0b2a4a;
+  --navy-700: #123a63;
+  --blue-600: #1b6394;
+  --blue-500: #2a7db3;
+  --blue-400: #4496c0;
+  --blue-100: #dcebf6;
+  --blue-50: #f2f7fb;
+  --amber-500: #ffae1a;
+  --amber-400: #ffc04d;
+  --amber-100: #fff3d9;
+  /* Neutres */
+  --ink: #0e2238;
+  --text: #33495f;
+  --muted: #536a80;          /* 5,4:1 sur fond clair (AA) */
+  --placeholder: #63798e;
+  --line: #dbe5ee;
+  --line-strong: #bccddc;
+  --surface: #ffffff;
+  --bg: #f6f9fc;
+  /* États */
+  --ok: #0b6b4b;             /* 5,6:1 sur --ok-bg (AA) */
+  --ok-bg: #e4f6ee;
+  --err: #c0362c;
+  --err-bg: #fdecea;
+  --wa: #0f7a41;             /* vert WhatsApp assombri : 5,3:1 avec du texte blanc (AA) */
+  --wa-dark: #0b6234;
+  /* Typographie */
+  --font-display: "Bricolage Grotesque", "Bricolage Fallback", system-ui, sans-serif;
+  --font-text: "Manrope", "Manrope Fallback", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --fs-xs: 0.8125rem;
+  --fs-sm: 0.9375rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --fs-2xl: clamp(1.6rem, 1.25rem + 1.6vw, 2.5rem);
+  --fs-3xl: clamp(2.125rem, 1.25rem + 3.1vw, 3.75rem);
+  /* Espacements et formes */
+  --gutter: clamp(16px, 4vw, 32px);
+  --container: 1240px;
+  --section: clamp(56px, 8vw, 112px);
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 18px;
+  --r-xl: 28px;
+  --shadow-sm: 0 1px 2px rgba(7, 29, 51, 0.06), 0 1px 3px rgba(7, 29, 51, 0.05);
+  --shadow-md: 0 6px 18px -6px rgba(7, 29, 51, 0.16), 0 2px 6px rgba(7, 29, 51, 0.05);
+  --shadow-lg: 0 28px 60px -24px rgba(7, 29, 51, 0.35), 0 8px 20px -10px rgba(7, 29, 51, 0.12);
+  --ring: 0 0 0 3px rgba(255, 174, 26, 0.55);
+  --ease: cubic-bezier(0.22, 0.8, 0.26, 1);
+  --header-h: 72px;
+  --tap: 44px;               /* taille minimale d'une cible tactile */
+}
+
+/* Très grands écrans : conteneur un peu plus large, puis mise à l'échelle globale (2K / 4K). */
+@media (min-width: 1600px) { :root { --container: 1320px; } }

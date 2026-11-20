@@ -1,0 +1,8 @@
+[
+  { "id": "noir", "name": "Renault QM3 noir", "short": "QM3 noir", "sub": "Carrosserie noire, toit crème", "seats": 5,
+    "photos": [ { "key": "qm3-noir-avant", "label": "Vue avant" }, { "key": "qm3-noir-arriere", "label": "Vue arrière" }, { "key": "qm3-noir-coffre", "label": "Coffre" } ] },
+  { "id": "creme", "name": "Renault QM3 crème", "short": "QM3 crème", "sub": "Carrosserie crème, toit noir", "seats": 5,
+    "photos": [ { "key": "qm3-creme-avant", "label": "Vue avant" }, { "key": "qm3-creme-arriere", "label": "Vue arrière" }, { "key": "qm3-creme-interieur", "label": "Intérieur" } ] },
+  { "id": "bleu", "name": "Renault QM3 bleu", "short": "QM3 bleu", "sub": "Carrosserie bleue, toit crème", "seats": 5,
+    "photos": [ { "key": "qm3-bleu-avant", "label": "Vue avant" }, { "key": "qm3-bleu-profil", "label": "Vue de profil" }, { "key": "qm3-bleu-interieur", "label": "Intérieur" } ] }
+]

@@ -1,0 +1,518 @@
+[
+  {
+    "ref": "FMB-V001",
+    "slug": "renault-qm3-noir",
+    "make": "Renault",
+    "model": "QM3 noir",
+    "year": null,
+    "km": null,
+    "fuel": null,
+    "gearbox": null,
+    "type": "SUV",
+    "seats": 5,
+    "price": 6000000,
+    "demo": false,
+    "photos": [
+      {
+        "key": "qm3-noir-avant",
+        "label": "Extérieur · avant"
+      },
+      {
+        "key": "qm3-noir-face",
+        "label": "Extérieur · face"
+      },
+      {
+        "key": "qm3-noir-arriere",
+        "label": "Extérieur · arrière"
+      },
+      {
+        "key": "qm3-noir-coffre",
+        "label": "Coffre"
+      },
+      {
+        "key": "qm3-noir-interieur",
+        "label": "Intérieur"
+      }
+    ]
+  },
+  {
+    "ref": "FMB-V002",
+    "slug": "hyundai-tucson-2018",
+    "make": "Hyundai",
+    "model": "Tucson",
+    "year": 2018,
+    "km": 82000,
+    "fuel": "Diesel",
+    "gearbox": "Automatique",
+    "type": "SUV",
+    "seats": 5,
+    "price": 9800000,
+    "demo": true,
+    "photos": [
+      {
+        "key": "vente-hyundai-tucson",
+        "label": "Extérieur"
+      }
+    ]
+  },
+  {
+    "ref": "FMB-V003",
+    "slug": "hyundai-santa-fe-2017",
+    "make": "Hyundai",
+    "model": "Santa Fe",
+    "year": 2017,
+    "km": 105000,
+    "fuel": "Diesel",
+    "gearbox": "Automatique",
+    "type": "SUV",
+    "seats": 5,
+    "price": 11500000,
+    "demo": true,
+    "photos": [
+      {
+        "key": "vente-hyundai-santa-fe",
+        "label": "Extérieur"
+      }
+    ]
+  },
+  {
+    "ref": "FMB-V004",
+    "slug": "hyundai-sonata-2017",
+    "make": "Hyundai",
+    "model": "Sonata",
+    "year": 2017,
+    "km": 90000,
+    "fuel": "Essence",
+    "gearbox": "Automatique",
+    "type": "Berline",
+    "seats": 5,
+    "price": 7900000,
+    "demo": true,
+    "photos": [
+      {
+        "key": "vente-hyundai-sonata",
+        "label": "Extérieur"
+      }
+    ]
+  },
+  {
+    "ref": "FMB-V005",
+    "slug": "hyundai-accent-2016",
+    "make": "Hyundai",
+    "model": "Accent",
+    "year": 2016,
+    "km": 68000,
+    "fuel": "Essence",
+    "gearbox": "Manuelle",
+    "type": "Berline",
+    "seats": 5,
+    "price": 4800000,
+    "demo": true,
+    "photos": [
+      {
+        "key": "vente-hyundai-accent",
+        "label": "Extérieur"
+      }
+    ]
+  },
+  {
+    "ref": "FMB-V006",
+    "slug": "hyundai-i30-2017",
+    "make": "Hyundai",
+    "model": "i30",
+    "year": 2017,
+    "km": 72000,
+    "fuel": "Diesel",
+    "gearbox": "Manuelle",
+    "type": "Berline",
+    "seats": 5,
+    "price": 5900000,
+    "demo": true,
+    "photos": [
+      {
+        "key": "vente-hyundai-i30",
+        "label": "Extérieur"
+      }
+    ]
+  },
+  {
+    "ref": "FMB-V007",
+    "slug": "hyundai-grand-starex-2016",
+    "make": "Hyundai",
+    "model": "Grand Starex",
+    "year": 2016,
+    "km": 120000,
+    "fuel": "Diesel",
+    "gearbox": "Automatique",
+    "type": "Minibus",
+    "seats": null,
+    "price": 12500000,
+    "demo": true,
+    "photos": [
+      {
+        "key": "vente-hyundai-grand-starex",
+        "label": "Extérieur"
+      }
+    ]
+  },
+  {
+    "ref": "FMB-V008",
+    "slug": "hyundai-porter-ii-2015",
+    "make": "Hyundai",
+    "model": "Porter II",
+    "year": 2015,
+    "km": 140000,
+    "fuel": "Diesel",
+    "gearbox": "Manuelle",
+    "type": "Pick-up",
+    "seats": 3,
+    "price": 7200000,
+    "demo": true,
+    "photos": [
+      {
+        "key": "vente-hyundai-porter-ii",
+        "label": "Extérieur"
+      }
+    ]
+  },
+  {
+    "ref": "FMB-V009",
+    "slug": "kia-sportage-2018",
+    "make": "Kia",
+    "model": "Sportage",
+    "year": 2018,
+    "km": 76000,
+    "fuel": "Diesel",
+    "gearbox": "Automatique",
+    "type": "SUV",
+    "seats": 5,
+    "price": 9400000,
+    "demo": true,
+    "photos": [
+      {
+        "key": "vente-kia-sportage",
+        "label": "Extérieur"
+      }
+    ]
+  },
+  {
+    "ref": "FMB-V010",
+    "slug": "kia-sorento-2016",
+    "make": "Kia",
+    "model": "Sorento",
+    "year": 2016,
+    "km": 112000,
+    "fuel": "Diesel",
+    "gearbox": "Automatique",
+    "type": "SUV",
+    "seats": 5,
+    "price": 9900000,
+    "demo": true,
+    "photos": [
+      {
+        "key": "vente-kia-sorento",
+        "label": "Extérieur"
+      }
+    ]
+  },
+  {
+    "ref": "FMB-V011",
+    "slug": "kia-seltos-2020",
+    "make": "Kia",
+    "model": "Seltos",
+    "year": 2020,
+    "km": 40000,
+    "fuel": "Essence",
+    "gearbox": "Automatique",
+    "type": "SUV",
+    "seats": 5,
+    "price": 10500000,
+    "demo": true,
+    "photos": [
+      {
+        "key": "vente-kia-seltos",
+        "label": "Extérieur"
+      }
+    ]
+  },
+  {
+    "ref": "FMB-V012",
+    "slug": "kia-k5-2017",
+    "make": "Kia",
+    "model": "K5",
+    "year": 2017,
+    "km": 88000,
+    "fuel": "Essence",
+    "gearbox": "Automatique",
+    "type": "Berline",
+    "seats": 5,
+    "price": 7500000,
+    "demo": true,
+    "photos": [
+      {
+        "key": "vente-kia-k5",
+        "label": "Extérieur"
+      }
+    ]
+  },
+  {
+    "ref": "FMB-V013",
+    "slug": "kia-rio-2017",
+    "make": "Kia",
+    "model": "Rio",
+    "year": 2017,
+    "km": 62000,
+    "fuel": "Essence",
+    "gearbox": "Manuelle",
+    "type": "Berline",
+    "seats": 5,
+    "price": 4500000,
+    "demo": true,
+    "photos": [
+      {
+        "key": "vente-kia-rio",
+        "label": "Extérieur"
+      }
+    ]
+  },
+  {
+    "ref": "FMB-V014",
+    "slug": "kia-morning-2017",
+    "make": "Kia",
+    "model": "Morning",
+    "year": 2017,
+    "km": 55000,
+    "fuel": "Essence",
+    "gearbox": "Automatique",
+    "type": "Citadine",
+    "seats": 5,
+    "price": 3900000,
+    "demo": true,
+    "photos": [
+      {
+        "key": "vente-kia-morning",
+        "label": "Extérieur"
+      }
+    ]
+  },
+  {
+    "ref": "FMB-V015",
+    "slug": "kia-carnival-2016",
+    "make": "Kia",
+    "model": "Carnival",
+    "year": 2016,
+    "km": 130000,
+    "fuel": "Diesel",
+    "gearbox": "Automatique",
+    "type": "Minibus",
+    "seats": null,
+    "price": 10800000,
+    "demo": true,
+    "photos": [
+      {
+        "key": "vente-kia-carnival",
+        "label": "Extérieur"
+      }
+    ]
+  },
+  {
+    "ref": "FMB-V016",
+    "slug": "kia-bongo-iii-2015",
+    "make": "Kia",
+    "model": "Bongo III",
+    "year": 2015,
+    "km": 150000,
+    "fuel": "Diesel",
+    "gearbox": "Manuelle",
+    "type": "Pick-up",
+    "seats": 3,
+    "price": 6900000,
+    "demo": true,
+    "photos": [
+      {
+        "key": "vente-kia-bongo-iii",
+        "label": "Extérieur"
+      }
+    ]
+  },
+  {
+    "ref": "FMB-V017",
+    "slug": "toyota-corolla-2016",
+    "make": "Toyota",
+    "model": "Corolla",
+    "year": 2016,
+    "km": 98000,
+    "fuel": "Essence",
+    "gearbox": "Automatique",
+    "type": "Berline",
+    "seats": 5,
+    "price": 6800000,
+    "demo": true,
+    "photos": [
+      {
+        "key": "vente-toyota-corolla",
+        "label": "Extérieur"
+      }
+    ]
+  },
+  {
+    "ref": "FMB-V018",
+    "slug": "toyota-rav4-2017",
+    "make": "Toyota",
+    "model": "RAV4",
+    "year": 2017,
+    "km": 91000,
+    "fuel": "Essence",
+    "gearbox": "Automatique",
+    "type": "SUV",
+    "seats": 5,
+    "price": 11200000,
+    "demo": true,
+    "photos": [
+      {
+        "key": "vente-toyota-rav4",
+        "label": "Extérieur"
+      }
+    ]
+  },
+  {
+    "ref": "FMB-V019",
+    "slug": "toyota-hilux-2016",
+    "make": "Toyota",
+    "model": "Hilux",
+    "year": 2016,
+    "km": 125000,
+    "fuel": "Diesel",
+    "gearbox": "Manuelle",
+    "type": "Pick-up",
+    "seats": 3,
+    "price": 12900000,
+    "demo": true,
+    "photos": [
+      {
+        "key": "vente-toyota-hilux",
+        "label": "Extérieur"
+      }
+    ]
+  },
+  {
+    "ref": "FMB-V020",
+    "slug": "toyota-land-cruiser-prado-2014",
+    "make": "Toyota",
+    "model": "Land Cruiser Prado",
+    "year": 2014,
+    "km": 150000,
+    "fuel": "Diesel",
+    "gearbox": "Automatique",
+    "type": "SUV",
+    "seats": 5,
+    "price": 16500000,
+    "demo": true,
+    "photos": [
+      {
+        "key": "vente-toyota-land-cruiser-prado",
+        "label": "Extérieur"
+      }
+    ]
+  },
+  {
+    "ref": "FMB-V021",
+    "slug": "toyota-hiace-2015",
+    "make": "Toyota",
+    "model": "Hiace",
+    "year": 2015,
+    "km": 160000,
+    "fuel": "Diesel",
+    "gearbox": "Manuelle",
+    "type": "Minibus",
+    "seats": null,
+    "price": 13800000,
+    "demo": true,
+    "photos": [
+      {
+        "key": "vente-toyota-hiace",
+        "label": "Extérieur"
+      }
+    ]
+  },
+  {
+    "ref": "FMB-V022",
+    "slug": "renault-sm6-2018",
+    "make": "Renault",
+    "model": "SM6",
+    "year": 2018,
+    "km": 70000,
+    "fuel": "Diesel",
+    "gearbox": "Automatique",
+    "type": "Berline",
+    "seats": 5,
+    "price": 8600000,
+    "demo": true,
+    "photos": [
+      {
+        "key": "vente-renault-sm6",
+        "label": "Extérieur"
+      }
+    ]
+  },
+  {
+    "ref": "FMB-V023",
+    "slug": "ssangyong-tivoli-2017",
+    "make": "SsangYong",
+    "model": "Tivoli",
+    "year": 2017,
+    "km": 80000,
+    "fuel": "Essence",
+    "gearbox": "Automatique",
+    "type": "SUV",
+    "seats": 5,
+    "price": 6300000,
+    "demo": true,
+    "photos": [
+      {
+        "key": "vente-ssangyong-tivoli",
+        "label": "Extérieur"
+      }
+    ]
+  },
+  {
+    "ref": "FMB-V024",
+    "slug": "chevrolet-spark-2016",
+    "make": "Chevrolet",
+    "model": "Spark",
+    "year": 2016,
+    "km": 60000,
+    "fuel": "Essence",
+    "gearbox": "Automatique",
+    "type": "Citadine",
+    "seats": 5,
+    "price": 3600000,
+    "demo": true,
+    "photos": [
+      {
+        "key": "vente-chevrolet-spark",
+        "label": "Extérieur"
+      }
+    ]
+  },
+  {
+    "ref": "FMB-V025",
+    "slug": "nissan-qashqai-2016",
+    "make": "Nissan",
+    "model": "Qashqai",
+    "year": 2016,
+    "km": 95000,
+    "fuel": "Diesel",
+    "gearbox": "Manuelle",
+    "type": "SUV",
+    "seats": 5,
+    "price": 8100000,
+    "demo": true,
+    "photos": [
+      {
+        "key": "vente-nissan-qashqai",
+        "label": "Extérieur"
+      }
+    ]
+  }
+]

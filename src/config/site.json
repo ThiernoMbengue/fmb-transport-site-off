@@ -1,0 +1,25 @@
+{
+  "name": "FMB Transport",
+  "legalName": "FMB Trans-Mobilité Services SARL",
+  "tagline": "Trans-Mobilité Services",
+  "siteUrl": "",
+  "locale": "fr_SN",
+  "phoneDisplay": "+221 77 689 33 69",
+  "phoneE164": "+221776893369",
+  "whatsapp": "221776893369",
+  "email": "fmb.transmobilite@gmail.com",
+  "address": {
+    "street": "Cité Asecna, Quartier Moussa Sall, N°A 28",
+    "locality": "Yeumbeul Nord",
+    "region": "Dakar",
+    "country": "SN",
+    "countryName": "Sénégal"
+  },
+  "rc": "SN DKR 2025 B 31716",
+  "ninea": "012385862",
+  "publicationDirector": "",
+  "host": { "name": "", "address": "", "website": "" },
+  "demoMode": true,
+  "analytics": { "enabled": false, "scriptUrl": "", "siteId": "" },
+  "themeColor": "#0B2A4A"
+}

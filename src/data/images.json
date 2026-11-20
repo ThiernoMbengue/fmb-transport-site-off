@@ -1,0 +1,341 @@
+{
+  "qm3-bleu-avant": {
+    "w": 800,
+    "h": 468,
+    "widths": [
+      320,
+      480,
+      800
+    ]
+  },
+  "qm3-bleu-interieur": {
+    "w": 800,
+    "h": 597,
+    "widths": [
+      320,
+      480,
+      800
+    ]
+  },
+  "qm3-bleu-profil": {
+    "w": 800,
+    "h": 470,
+    "widths": [
+      320,
+      480,
+      800
+    ]
+  },
+  "qm3-creme-arriere": {
+    "w": 800,
+    "h": 563,
+    "widths": [
+      320,
+      480,
+      800
+    ]
+  },
+  "qm3-creme-avant": {
+    "w": 800,
+    "h": 562,
+    "widths": [
+      320,
+      480,
+      800
+    ]
+  },
+  "qm3-creme-interieur": {
+    "w": 800,
+    "h": 466,
+    "widths": [
+      320,
+      480,
+      800
+    ]
+  },
+  "qm3-noir-arriere": {
+    "w": 800,
+    "h": 595,
+    "widths": [
+      320,
+      480,
+      800
+    ]
+  },
+  "qm3-noir-avant": {
+    "w": 800,
+    "h": 594,
+    "widths": [
+      320,
+      480,
+      800
+    ]
+  },
+  "qm3-noir-coffre": {
+    "w": 800,
+    "h": 722,
+    "widths": [
+      320,
+      480,
+      800
+    ]
+  },
+  "qm3-noir-face": {
+    "w": 800,
+    "h": 816,
+    "widths": [
+      320,
+      480,
+      800
+    ]
+  },
+  "qm3-noir-interieur": {
+    "w": 800,
+    "h": 731,
+    "widths": [
+      320,
+      480,
+      800
+    ]
+  },
+  "vente-chevrolet-spark": {
+    "w": 1280,
+    "h": 852,
+    "widths": [
+      320,
+      480,
+      800,
+      1280
+    ]
+  },
+  "vente-hyundai-accent": {
+    "w": 1280,
+    "h": 769,
+    "widths": [
+      320,
+      480,
+      800,
+      1280
+    ]
+  },
+  "vente-hyundai-grand-starex": {
+    "w": 1280,
+    "h": 894,
+    "widths": [
+      320,
+      480,
+      800,
+      1280
+    ]
+  },
+  "vente-hyundai-i30": {
+    "w": 1280,
+    "h": 769,
+    "widths": [
+      320,
+      480,
+      800,
+      1280
+    ]
+  },
+  "vente-hyundai-porter-ii": {
+    "w": 1280,
+    "h": 751,
+    "widths": [
+      320,
+      480,
+      800,
+      1280
+    ]
+  },
+  "vente-hyundai-santa-fe": {
+    "w": 1280,
+    "h": 888,
+    "widths": [
+      320,
+      480,
+      800,
+      1280
+    ]
+  },
+  "vente-hyundai-sonata": {
+    "w": 1280,
+    "h": 882,
+    "widths": [
+      320,
+      480,
+      800,
+      1280
+    ]
+  },
+  "vente-hyundai-tucson": {
+    "w": 1280,
+    "h": 974,
+    "widths": [
+      320,
+      480,
+      800,
+      1280
+    ]
+  },
+  "vente-kia-bongo-iii": {
+    "w": 1280,
+    "h": 960,
+    "widths": [
+      320,
+      480,
+      800,
+      1280
+    ]
+  },
+  "vente-kia-carnival": {
+    "w": 1280,
+    "h": 864,
+    "widths": [
+      320,
+      480,
+      800,
+      1280
+    ]
+  },
+  "vente-kia-k5": {
+    "w": 1280,
+    "h": 960,
+    "widths": [
+      320,
+      480,
+      800,
+      1280
+    ]
+  },
+  "vente-kia-morning": {
+    "w": 1280,
+    "h": 782,
+    "widths": [
+      320,
+      480,
+      800,
+      1280
+    ]
+  },
+  "vente-kia-rio": {
+    "w": 1280,
+    "h": 694,
+    "widths": [
+      320,
+      480,
+      800,
+      1280
+    ]
+  },
+  "vente-kia-seltos": {
+    "w": 1280,
+    "h": 760,
+    "widths": [
+      320,
+      480,
+      800,
+      1280
+    ]
+  },
+  "vente-kia-sorento": {
+    "w": 1280,
+    "h": 895,
+    "widths": [
+      320,
+      480,
+      800,
+      1280
+    ]
+  },
+  "vente-kia-sportage": {
+    "w": 1280,
+    "h": 760,
+    "widths": [
+      320,
+      480,
+      800,
+      1280
+    ]
+  },
+  "vente-nissan-qashqai": {
+    "w": 1280,
+    "h": 747,
+    "widths": [
+      320,
+      480,
+      800,
+      1280
+    ]
+  },
+  "vente-renault-sm6": {
+    "w": 1280,
+    "h": 720,
+    "widths": [
+      320,
+      480,
+      800,
+      1280
+    ]
+  },
+  "vente-ssangyong-tivoli": {
+    "w": 1280,
+    "h": 739,
+    "widths": [
+      320,
+      480,
+      800,
+      1280
+    ]
+  },
+  "vente-toyota-corolla": {
+    "w": 1280,
+    "h": 709,
+    "widths": [
+      320,
+      480,
+      800,
+      1280
+    ]
+  },
+  "vente-toyota-hiace": {
+    "w": 1280,
+    "h": 776,
+    "widths": [
+      320,
+      480,
+      800,
+      1280
+    ]
+  },
+  "vente-toyota-hilux": {
+    "w": 1280,
+    "h": 919,
+    "widths": [
+      320,
+      480,
+      800,
+      1280
+    ]
+  },
+  "vente-toyota-land-cruiser-prado": {
+    "w": 1280,
+    "h": 854,
+    "widths": [
+      320,
+      480,
+      800,
+      1280
+    ]
+  },
+  "vente-toyota-rav4": {
+    "w": 1280,
+    "h": 804,
+    "widths": [
+      320,
+      480,
+      800,
+      1280
+    ]
+  }
+}

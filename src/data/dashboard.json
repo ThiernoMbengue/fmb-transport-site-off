@@ -1,0 +1,13 @@
+{
+  "period": "septembre 2026",
+  "kpis": { "revenue": 772505, "expenses": 281759, "net": 490746, "days": 22, "avgNet": 22307 },
+  "bars": [58.6, 44.9, 25.9, 75.6, 62.7, 55.6, 102.4, 55.5, 57.6, 90.1, 60.4, 86.3, 103.2, 57.6, 33.5, 70.9, 66.7, 63.4, 77.9, 64.1, 73.1, 37.2],
+  "avgBar": 64.7,
+  "rows": [
+    { "date": "25 sept.", "revenue": 32773, "expenses": 10925, "net": 21848 },
+    { "date": "26 sept.", "revenue": 43854, "expenses": 17000, "net": 26854 },
+    { "date": "28 sept.", "revenue": 36050, "expenses": 13940, "net": 22110 },
+    { "date": "29 sept.", "revenue": 41568, "expenses": 16357, "net": 25211 },
+    { "date": "30 sept.", "revenue": 21160, "expenses": 8320, "net": 12840 }
+  ]
+}

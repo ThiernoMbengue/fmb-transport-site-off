@@ -1,0 +1,8 @@
+[
+  { "q": "Comment réserver un véhicule ?", "a": "Choisissez un service dans le module de réservation, sélectionnez le véhicule de votre choix, complétez le formulaire puis envoyez votre demande sur WhatsApp. Notre équipe vous répond pour confirmer." },
+  { "q": "Puis-je réserver un chauffeur sur plusieurs jours ?", "a": "Oui. Choisissez « Plusieurs jours » et indiquez une date de début et une date de fin." },
+  { "q": "Le transfert vers l’aéroport fonctionne-t-il dans les deux sens ?", "a": "Oui : de Dakar vers l’AIBD, ou de l’AIBD vers l’adresse de votre choix à Dakar. Vous indiquez le sens, la date, l’heure et, si vous le souhaitez, votre numéro de vol." },
+  { "q": "La location longue durée comprend-elle un chauffeur ?", "a": "Vous choisissez : avec ou sans chauffeur. Un devis est établi selon le véhicule et la durée souhaitée." },
+  { "q": "Comment sont calculés les tarifs ?", "a": "Les tarifs sont établis sur devis, selon le service, la date et la durée. Envoyez votre demande pour recevoir une proposition." },
+  { "q": "Dois-je payer en ligne ?", "a": "Non. Aucun paiement n’est demandé sur le site : vous envoyez une demande, et notre équipe vous répond sur WhatsApp avec le tarif et la confirmation." }
+]
