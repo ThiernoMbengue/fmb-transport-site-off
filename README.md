@@ -14,7 +14,7 @@ Le dossier **`dist/`** est le site prêt à publier.
 
 Mieux : relier le projet à GitHub + Netlify. À chaque modification, le site est reconstruit,
 contrôlé puis publié automatiquement (`netlify.toml` et `.github/workflows/ci.yml` sont fournis).
-Fonctionne aussi sur Cloudflare Pages, Vercel, GitHub Pages.
+Fonctionne aussi sur **Vercel** (configuration fournie dans `vercel.json` : il suffit d'importer le dépôt), Cloudflare Pages, GitHub Pages.
 
 ## Modifier le contenu (sans toucher au code)
 

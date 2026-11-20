@@ -62,5 +62,13 @@ for (const f of ['robots.txt', '_headers', 'manifest.webmanifest', 'favicon.ico'
 const heavy = files.filter((f) => /\.(webp|avif|jpg|png)$/.test(f) && statSync(f).size > 300 * 1024);
 heavy.forEach((f) => errors.push(`image trop lourde (> 300 Ko) : ${relative(DIST, f)}`));
 
+// vercel.json (hébergement Vercel) doit reprendre la même politique de sécurité que dist/_headers (Netlify, Cloudflare)
+const vercelFile = join(DIST, '..', 'vercel.json');
+if (existsSync(vercelFile)) {
+  const fromHeaders = (readFileSync(join(DIST, '_headers'), 'utf8').match(/Content-Security-Policy: (.*)/) || [])[1];
+  const fromVercel = JSON.parse(readFileSync(vercelFile, 'utf8')).headers.flatMap((h) => h.headers).find((h) => h.key === 'Content-Security-Policy')?.value;
+  if (fromHeaders !== fromVercel) errors.push('vercel.json : la Content-Security-Policy diffère de dist/_headers (copier la ligne de dist/_headers dans vercel.json)');
+}
+
 if (errors.length) { console.error(`✖ ${errors.length} problème(s) :\n - ${errors.join('\n - ')}`); process.exit(1); }
 console.log(`✔ ${pages.length} pages contrôlées : liens, SEO, accessibilité de base, sécurité (CSP) — aucun problème.`);
