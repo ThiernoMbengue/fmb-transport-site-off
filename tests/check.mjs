@@ -45,7 +45,7 @@ for (const page of pages) {
   for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) { try { JSON.parse(m[1]); } catch { err(page, 'JSON-LD invalide'); } }
 
   // Liens et ressources internes
-  const refs = [...html.matchAll(/\s(?:href|src)="([^"]+)"/g)].map((m) => m[1]).concat([...html.matchAll(/\ssrcset="([^"]+)"/g)].flatMap((m) => m[1].split(',').map((s) => s.trim().split(' ')[0])));
+  const refs = [...html.matchAll(/\s(?:href|src)="([^"]+)"/g)].map((m) => m[1]).concat([...html.matchAll(/\ssrcset="([^"]+)"/g)].filter((m) => !m[1].startsWith('data:')).flatMap((m) => m[1].split(',').map((s) => s.trim().split(' ')[0])));
   for (const ref of refs) {
     if (/^(https?:|mailto:|tel:|data:|#)/.test(ref)) continue;
     const [path, hash] = ref.split('?')[0].split('#');

@@ -84,9 +84,19 @@ const B = 'http://localhost:4173/';
   await q.click('.main-nav a[href="vehicules.html"]'); await q.waitForURL(/vehicules/);
   await q.click('[data-filters-open]'); await q.waitForTimeout(400); await q.screenshot({ path: '/dev/null', type: 'png' });
   await q.selectOption('#f-type', 'Pick-up'); await q.click('.filters-apply'); await q.waitForTimeout(400); assert.equal(await q.locator('[data-vehicle]:visible').count(), 3);
-  assert(await q.isVisible('.mobile-bar'));
+  // barre d'onglets en bas d'écran (remplace l'ancienne barre d'actions et le bouton flottant)
+  assert(await q.isVisible('.tabbar')); assert(!(await q.isVisible('.mobile-bar'))); assert(!(await q.isVisible('.wa-float')));
+  assert.equal(await q.getAttribute('.tabbar [data-tab="vehicles"]', 'aria-current'), 'page');
+  // 10 véhicules puis « Afficher plus » avec le nombre restant
+  await q.goto(B + 'vehicules.html'); assert.equal(await q.locator('[data-vehicle]:visible').count(), 10);
+  assert(/15 restants/.test(await q.innerText('[data-more-btn]')));
+  // fiche rapide : panneau qui monte du bas, sans quitter la liste
+  await q.locator('.vcard:visible .vcard-title a').first().click(); await q.waitForTimeout(400);
+  assert(await q.isVisible('dialog.sheet .sheet-actions')); assert(/vehicules\.html$/.test(q.url()));
+  await q.click('dialog.sheet .sheet-close'); await q.waitForTimeout(400); assert(!(await q.isVisible('dialog.sheet')));
   await q.goto(B + 'vehicules/renault-qm3-noir.html'); await q.screenshot({ path: '/dev/null', type: 'png', fullPage: true });
-  console.log('✔ mobile : menu, panneau de filtres, barre d’action');
+  assert.equal(await q.evaluate(() => document.documentElement.scrollWidth - innerWidth), 0, 'aucun défilement horizontal');
+  console.log('✔ mobile : menu, filtres en panneau, barre d’onglets, fiche rapide, 10 véhicules + « Afficher plus »');
   assert.deepEqual(errs, [], 'erreurs JS: ' + errs); console.log('✔ aucune erreur JavaScript');
   await b.close();
 })().catch(e => { console.error('✖', e.message); process.exit(1); });

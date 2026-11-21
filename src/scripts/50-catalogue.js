@@ -7,7 +7,8 @@ FMB.register('catalogue', function () {
   var countEl = $('[data-count]', root), chipsEl = $('[data-active-chips]', root), emptyEl = $('[data-empty]', root);
   var moreBox = $('[data-more]', root), moreText = $('[data-more-text]', root), sortEl = $('[data-sort]', root);
   var lastOrder = cards.map(function (c, i) { return i; }).join(','), badge = $('[data-filters-badge]', root);
-  var PAGE = 12, shown = PAGE, KEYS = ['q', 'marque', 'type', 'budget', 'carburant', 'boite', 'favoris', 'tri'];
+  // 10 véhicules à la fois sur téléphone (page courte), 12 sur ordinateur
+  var PAGE = FMB.mobile.matches ? 10 : 12, shown = PAGE, KEYS = ['q', 'marque', 'type', 'budget', 'carburant', 'boite', 'favoris', 'tri'];
   var LABELS = { q: 'Recherche', marque: 'Marque', type: 'Type', budget: 'Budget max.', carburant: 'Carburant', boite: 'Boîte', favoris: 'Favoris' };
   cards.forEach(function (c, i) { c.dataset.index = i; });
   var norm = function (s) { return String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); };
@@ -35,6 +36,7 @@ FMB.register('catalogue', function () {
     emptyEl.hidden = n !== 0; grid.hidden = n === 0;
     moreBox.hidden = n <= shown;
     moreText.textContent = Math.min(shown, n) + ' véhicules affichés sur ' + n;
+    $$('[data-more-left]', root).forEach(function (el) { el.textContent = Math.max(0, n - shown); });
     // Pastilles des filtres actifs
     chipsEl.textContent = '';
     Object.keys(LABELS).forEach(function (k) {
@@ -65,11 +67,15 @@ FMB.register('catalogue', function () {
 
   // Panneau de filtres sur mobile
   var opener = $('[data-filters-open]', root);
+  var backdrop = null;
   function drawer(open) {
     form.classList.toggle('is-open', open); document.body.classList.toggle('nav-open', open);
+    // Sur téléphone, le panneau monte du bas : un voile derrière permet de le fermer d'un toucher
+    if (open && FMB.mobile.matches && !backdrop) { backdrop = document.createElement('div'); backdrop.className = 'sheet-backdrop'; backdrop.addEventListener('click', function () { drawer(false); }); document.body.appendChild(backdrop); }
+    if (!open && backdrop) { backdrop.parentNode.removeChild(backdrop); backdrop = null; }
     if (!open && opener) { opener.focus({ preventScroll: true }); countEl.scrollIntoView({ block: 'start' }); }
   }
-  if (opener) opener.addEventListener('click', function () { drawer(true); $('input', form).focus(); });
+  if (opener) opener.addEventListener('click', function () { drawer(true); if (!FMB.mobile.matches) $('input', form).focus(); else $('[data-filters-close]', form).focus({ preventScroll: true }); });
   $$('[data-filters-close]', root).forEach(function (b) { b.addEventListener('click', function () { drawer(false); }); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && form.classList.contains('is-open')) drawer(false); });
   apply();

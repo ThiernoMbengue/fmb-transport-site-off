@@ -6,6 +6,8 @@
 var FMB = (function () {
   'use strict';
   var html = document.documentElement;
+  // Téléphone : même seuil que la feuille de style 05-mobile.css
+  var mobile = window.matchMedia('(max-width: 640px)');
   var cfg = { wa: html.dataset.wa, email: html.dataset.email, phone: html.dataset.phone, root: html.dataset.root || '' };
   var $ = function (sel, el) { return (el || document).querySelector(sel); };
   var $$ = function (sel, el) { return Array.prototype.slice.call((el || document).querySelectorAll(sel)); };
@@ -63,5 +65,5 @@ var FMB = (function () {
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else setTimeout(start, 0);
 
-  return { cfg: cfg, $: $, $$: $$, store: store, waUrl: waUrl, openExternal: openExternal, toast: toast, todayISO: todayISO, frDate: frDate, digits: digits, clean: clean, setFieldError: setFieldError, register: register };
+  return { mobile: mobile, cfg: cfg, $: $, $$: $$, store: store, waUrl: waUrl, openExternal: openExternal, toast: toast, todayISO: todayISO, frDate: frDate, digits: digits, clean: clean, setFieldError: setFieldError, register: register };
 })();

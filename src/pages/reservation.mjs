@@ -1,5 +1,5 @@
 import { icon } from '../components/icons.mjs';
-import { esc, imgUrl, picture } from '../components/util.mjs';
+import { esc, imgUrl, picture, rs } from '../components/util.mjs';
 import { SERVICES, bookingFields } from '../components/sections.mjs';
 import { breadcrumb } from '../components/layout.mjs';
 
@@ -13,7 +13,7 @@ export default function reservation(ctx) {
     <div data-reserve-form>
       <div class="section-head" style-reset>
         <h1 class="h-page">Finalisez votre réservation</h1>
-        <p class="lead">Vérifiez votre trajet, ajoutez vos coordonnées, puis envoyez votre demande sur WhatsApp. Les champs marqués d’un * sont obligatoires.</p>
+        <p class="lead">${rs('Vérifiez votre trajet, ajoutez vos coordonnées, puis envoyez votre demande sur WhatsApp. Les champs marqués d’un * sont obligatoires.', 'Trois étapes, puis envoi sur WhatsApp. * obligatoire.')}</p>
       </div>
       <form class="reserve" data-booking="full" novalidate>
         <div>
@@ -38,7 +38,7 @@ export default function reservation(ctx) {
             <div class="form-grid">
               <div class="field" data-field="nom"><label for="r-nom">Nom et prénom <span aria-hidden="true">*</span></label><input class="input" id="r-nom" name="nom" type="text" placeholder="Par exemple Awa Diop" autocomplete="name" maxlength="80" required><span class="field-error" data-error hidden></span></div>
               <div class="field" data-field="telephone"><label for="r-telephone">Téléphone ou WhatsApp <span aria-hidden="true">*</span></label><input class="input" id="r-telephone" name="telephone" type="tel" inputmode="tel" placeholder="+221 77 000 00 00" autocomplete="tel" maxlength="24" required><span class="field-error" data-error hidden></span></div>
-              <div class="field span-all" data-field="precisions"><label for="r-precisions">Précisions <span class="opt">(facultatif)</span></label><textarea class="textarea" id="r-precisions" name="precisions" placeholder="Bagages, enfants, arrêts souhaités, autre besoin…" maxlength="500"></textarea></div>
+              <div class="field span-all" data-field="precisions"><label for="r-precisions">Précisions <span class="opt">(facultatif)</span></label><textarea class="textarea" id="r-precisions" name="precisions" placeholder="Bagages, enfants, arrêts souhaités, autre besoin…" data-ph-sm="Bagages, enfants…" maxlength="500"></textarea></div>
             </div>
           </fieldset>
         </div>

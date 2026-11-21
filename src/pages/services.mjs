@@ -1,5 +1,5 @@
 import { icon } from '../components/icons.mjs';
-import { esc, picture, waLink } from '../components/util.mjs';
+import { esc, picture, waLink, rs } from '../components/util.mjs';
 import { pageHero, ctaBand } from '../components/sections.mjs';
 import { breadcrumb, breadcrumbLd } from '../components/layout.mjs';
 
@@ -8,7 +8,7 @@ export default function services(ctx) {
   const crumbs = [{ label: 'Services' }];
   const waOwner = waLink(site, 'Bonjour FMB, je possède un véhicule et je souhaite vous le confier pour qu’il soit géré.');
   const body = `
-${pageHero(ctx, { crumbs: breadcrumb(ctx, crumbs), eyebrow: 'Les services de FMB', title: 'Gestion, achat, vente et investissement', lead: 'Au-delà du transport avec chauffeur, FMB accompagne les propriétaires, les entreprises et les investisseurs.' })}
+${pageHero(ctx, { crumbs: breadcrumb(ctx, crumbs), eyebrow: 'Les services de FMB', title: 'Gestion, achat, vente et investissement', lead: 'Au-delà du transport avec chauffeur, FMB accompagne les propriétaires, les entreprises et les investisseurs.', leadShort: 'Pour les propriétaires, entreprises et investisseurs.' })}
 <section class="section">
   <div class="container">
     <div class="grid grid--4">
@@ -16,7 +16,7 @@ ${pageHero(ctx, { crumbs: breadcrumb(ctx, crumbs), eyebrow: 'Les services de FMB
         <span class="ico-tile">${icon(s.icon)}</span>
         <h2 class="h3">${esc(s.title)}</h2>
         <p>${esc(s.text)}</p>
-        <a class="link-arrow" href="${s.href ? root + s.href : waLink(site, s.wa)}"${s.href ? '' : ' target="_blank" rel="noopener"'}>${esc(s.cta)}${icon('arrow-right')}</a>
+        <a class="link-arrow" href="${s.href ? root + s.href : waLink(site, s.wa)}"${s.href ? '' : ' target="_blank" rel="noopener"'}>${rs(esc(s.cta), esc(s.ctaShort))}${icon('arrow-right')}</a>
       </article>`).join('\n      ')}
     </div>
   </div>
@@ -26,8 +26,8 @@ ${pageHero(ctx, { crumbs: breadcrumb(ctx, crumbs), eyebrow: 'Les services de FMB
     <div class="stack" data-reveal>
       <span class="eyebrow">Propriétaires de véhicules</span>
       <h2 id="proprio-title">Vous avez un véhicule ? Confiez-le-nous.</h2>
-      <p>Nous mettons votre véhicule en service et le gérons pour vous. Vous suivez son activité grâce à des relevés de versements réguliers.</p>
-      <ul class="tick-list">
+      <p>${rs('Nous mettons votre véhicule en service et le gérons pour vous. Vous suivez son activité grâce à des relevés de versements réguliers.', 'Nous le gérons, vous suivez les versements.')}</p>
+      <ul class="tick-list lg">
         <li>${icon('check-circle')}Location, Yango ou chauffeur : nous gérons l’exploitation</li>
         <li>${icon('check-circle')}Entretien suivi par notre équipe</li>
         <li>${icon('check-circle')}Relevés de versements détaillés, jour par jour</li>
@@ -43,12 +43,12 @@ ${pageHero(ctx, { crumbs: breadcrumb(ctx, crumbs), eyebrow: 'Les services de FMB
 </section>
 <section class="section section--white">
   <div class="container split">
-    <div class="split-media" data-reveal>${picture(ctx, 'qm3-creme-avant', 'Renault QM3 crème de la flotte FMB', { sizes: '(min-width: 900px) 580px, 92vw' })}</div>
+    <div class="split-media lg" data-reveal>${picture(ctx, 'qm3-creme-avant', 'Renault QM3 crème de la flotte FMB', { sizes: '(min-width: 900px) 580px, 92vw' })}</div>
     <div class="stack" data-reveal>
       <span class="eyebrow">Transport avec chauffeur</span>
       <h2>Besoin d’un chauffeur à Dakar ?</h2>
-      <p class="lead">Transfert aéroport AIBD, chauffeur à la journée ou sur plusieurs jours, location longue durée avec ou sans chauffeur.</p>
-      <div class="cluster"><a class="btn btn--cta" href="${root}reservation.html">Réserver un chauffeur${icon('arrow-right')}</a><a class="btn btn--outline" href="${root}index.html#flotte">Voir la flotte</a></div>
+      <p class="lead">${rs('Transfert aéroport AIBD, chauffeur à la journée ou sur plusieurs jours, location longue durée avec ou sans chauffeur.', 'Aéroport, journée, plusieurs jours ou longue durée.')}</p>
+      <div class="cluster"><a class="btn btn--cta" href="${root}reservation.html">${rs('Réserver un chauffeur', 'Réserver')}${icon('arrow-right')}</a><a class="btn btn--outline" href="${root}index.html#flotte">${rs('Voir la flotte', 'La flotte')}</a></div>
     </div>
   </div>
 </section>

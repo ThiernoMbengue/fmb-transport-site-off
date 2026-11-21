@@ -1,5 +1,5 @@
 import { icon } from '../components/icons.mjs';
-import { esc, waLink } from '../components/util.mjs';
+import { esc, waLink, rs } from '../components/util.mjs';
 import { pageHero } from '../components/sections.mjs';
 import { breadcrumb, breadcrumbLd } from '../components/layout.mjs';
 
@@ -9,11 +9,11 @@ export default function contact(ctx) {
   const crumbs = [{ label: 'Contact' }];
   const mapUrl = `https://www.openstreetmap.org/search?query=${encodeURIComponent(`${a.locality}, ${a.region}, ${a.countryName}`)}`;
   const body = `
-${pageHero(ctx, { crumbs: breadcrumb(ctx, crumbs), eyebrow: 'Contact', title: 'Parlons de votre projet', lead: 'Une réservation, un véhicule à acheter ou à nous confier, une question : écrivez-nous, nous vous répondons directement.', compact: true })}
+${pageHero(ctx, { crumbs: breadcrumb(ctx, crumbs), eyebrow: 'Contact', title: 'Parlons de votre projet', lead: 'Une réservation, un véhicule à acheter ou à nous confier, une question : écrivez-nous, nous vous répondons directement.', leadShort: 'Réponse directe, sur WhatsApp ou par e-mail.', compact: true })}
 <section class="section section--tight">
   <div class="container contact-grid">
     <div class="form-block">
-      <div><h2>Envoyer un message</h2><p>Votre message s’ouvre dans WhatsApp ou dans votre messagerie, déjà rédigé : il ne reste qu’à l’envoyer.</p></div>
+      <div><h2>Envoyer un message</h2><p>${rs('Votre message s’ouvre dans WhatsApp ou dans votre messagerie, déjà rédigé : il ne reste qu’à l’envoyer.', 'Il s’ouvre déjà rédigé, prêt à envoyer.')}</p></div>
       <form class="form-grid" data-wa-form data-wa-intro="Bonjour FMB Transport," data-success="Votre message est prêt : il ne reste qu’à l’envoyer." novalidate>
         <div class="alert alert--error span-all" role="alert" tabindex="-1" data-form-summary hidden>${icon('alert')}<span></span></div>
         <div class="field" data-field="nom"><label for="c-nom">Nom et prénom <span aria-hidden="true">*</span></label><input class="input" id="c-nom" name="nom" data-label="Nom" type="text" autocomplete="name" maxlength="80" required data-min="2" data-msg="Indiquez votre nom et prénom."><span class="field-error" data-error hidden></span></div>
@@ -40,7 +40,7 @@ ${pageHero(ctx, { crumbs: breadcrumb(ctx, crumbs), eyebrow: 'Contact', title: 'P
           <li>${icon('building')}<div><span>Société</span><strong>${esc(site.legalName)}</strong><br>RC : ${site.rc} · NINEA : ${site.ninea}</div></li>
         </ul>
         <div class="cluster">
-          <a class="btn btn--wa btn--sm" href="${waLink(site)}" target="_blank" rel="noopener">${icon('whatsapp')}WhatsApp</a>
+          <a class="btn btn--wa btn--sm lg" href="${waLink(site)}" target="_blank" rel="noopener">${icon('whatsapp')}WhatsApp</a>
           <a class="btn btn--outline btn--sm" href="${mapUrl}" target="_blank" rel="noopener">${icon('map')}Voir sur la carte</a>
         </div>
       </div>

@@ -4,6 +4,8 @@ export const fmtInt = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '\u00a0'
 export const fmtPrice = (n) => `${fmtInt(n)}\u00a0FCFA`;
 export const waLink = (site, text) => `https://wa.me/${site.whatsapp}${text ? `?text=${encodeURIComponent(text)}` : ''}`;
 export const vehicleName = (v) => `${v.make} ${v.model}`;
+/** Texte en deux versions : la longue sur tablette/ordinateur, la courte sur téléphone (≤ 640 px). */
+export const rs = (long, short) => `<span class="lg">${long}</span><span class="sm">${short}</span>`;
 
 const imgPath = (ctx, key, w, ext) => `${ctx.root}assets/img/${key}-${w}.${ext}`;
 const widthsFor = (ctx, key, max) => {
@@ -23,7 +25,9 @@ export const imgUrl = (ctx, key, max = 1280, ext = 'webp') => imgPath(ctx, key, 
  *  - eager : image visible dès le chargement (pas de lazy-loading) ; priority : LA grande image de la page (LCP)
  * width/height sont toujours présents → aucun saut de mise en page (CLS).
  */
-export function picture(ctx, key, alt, { sizes = '100vw', eager = false, priority = eager, max = 1280, attrs = '', avif = true } = {}) {
+// Image transparente de 1 px : remplace une photo décorative masquée sur téléphone (aucun téléchargement inutile)
+const BLANK = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
+export function picture(ctx, key, alt, { sizes = '100vw', eager = false, priority = eager, max = 1280, attrs = '', avif = true, skipPhone = false } = {}) {
   const m = ctx.images[key];
   const ws = widthsFor(ctx, key, max), big = ws[ws.length - 1];
   const h = Math.round(m.h * big / m.w);
@@ -31,5 +35,6 @@ export function picture(ctx, key, alt, { sizes = '100vw', eager = false, priorit
   const load = priority ? 'fetchpriority="high"' : (eager ? 'decoding="async"' : 'loading="lazy" decoding="async"');
   const img = `<img${attrs ? ` ${attrs}` : ''} src="${imgPath(ctx, key, big, 'webp')}" srcset="${srcset(ctx, key, 'webp', max)}" sizes="${sizes}" width="${big}" height="${h}" alt="${esc(alt)}" ${load}>`;
   // avif: false → simple <img> WebP (miniatures : gain AVIF négligeable, HTML plus léger)
-  return avif ? `<picture><source type="image/avif" srcset="${srcset(ctx, key, 'avif', max)}" sizes="${sizes}">${img}</picture>` : img;
+  const phone = skipPhone ? `<source media="(max-width: 640px)" srcset="${BLANK}">` : '';
+  return avif ? `<picture>${phone}<source type="image/avif" srcset="${srcset(ctx, key, 'avif', max)}" sizes="${sizes}">${img}</picture>` : img;
 }

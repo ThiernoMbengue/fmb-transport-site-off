@@ -41,7 +41,7 @@ ${site.demoMode ? `<aside class="demo-bar" data-demo-bar aria-label="Information
 </header>`;
 }
 
-function footer(ctx) {
+function footer(ctx, page) {
   const { site, root } = ctx;
   const a = site.address;
   return `
@@ -53,13 +53,13 @@ function footer(ctx) {
           <img src="${root}assets/img/logo-96.webp" width="46" height="46" alt="" loading="lazy">
           <span><span class="brand-name">FMB Transport</span><span class="brand-sub">${esc(site.tagline)}</span></span>
         </a>
-        <p>Voitures avec chauffeur à Dakar, transfert aéroport AIBD, location longue durée, vente de véhicules dédouanés et gestion de véhicules.</p>
-        <div class="cluster">
+        <p class="lg">Voitures avec chauffeur à Dakar, transfert aéroport AIBD, location longue durée, vente de véhicules dédouanés et gestion de véhicules.</p>
+        <div class="cluster lg">
           <a class="btn btn--wa btn--sm" href="${waLink(site)}" target="_blank" rel="noopener">${icon('whatsapp')}WhatsApp</a>
           <a class="btn btn--ghost-light btn--sm" href="tel:${site.phoneE164}">${icon('phone')}Appeler</a>
         </div>
       </div>
-      <nav aria-label="Transport">
+      <nav class="lg" aria-label="Transport">
         <h2>Transport</h2>
         <ul>
           <li><a href="${root}reservation.html?service=journee">Chauffeur à la journée</a></li>
@@ -82,7 +82,7 @@ function footer(ctx) {
       <div>
         <h2>Contact</h2>
         <ul>
-          <li><a href="tel:${site.phoneE164}">${site.phoneDisplay}</a></li>
+          <li class="lg"><a href="tel:${site.phoneE164}">${site.phoneDisplay}</a></li>
           <li><a href="mailto:${site.email}">${site.email}</a></li>
           <li>${esc(a.locality)}, ${esc(a.street)}</li>
           <li><a href="${root}contact.html">Nous écrire</a></li>
@@ -94,7 +94,14 @@ function footer(ctx) {
       <span class="cluster"><a href="${root}mentions-legales.html">Mentions légales</a><a href="${root}confidentialite.html">Confidentialité</a><a href="${root}conditions.html">Conditions d’utilisation</a></span>
     </div>
   </div>
-<nav class="mobile-bar no-print" aria-label="Actions rapides">
+<nav class="tabbar no-print" aria-label="Navigation rapide">
+    <a href="${root}index.html" data-tab="home"${page.nav === 'home' ? ' aria-current="page"' : ''}>${icon('home')}<span>Accueil</span></a>
+    <a href="${root}vehicules.html" data-tab="vehicles"${page.nav === 'vehicles' ? ' aria-current="page"' : ''}>${icon('car')}<span>Véhicules</span></a>
+    <a href="tel:${site.phoneE164}">${icon('phone')}<span>Appeler</span></a>
+    <a href="${root}vehicules.html?favoris=1" data-tab="favs">${icon('heart')}<span>Favoris</span><span class="badge-count" data-fav-count hidden>0</span></a>
+    <a class="is-wa" href="${waLink(site)}" target="_blank" rel="noopener">${icon('whatsapp')}<span>WhatsApp</span></a>
+  </nav>
+  <nav class="mobile-bar no-print" aria-label="Actions rapides">
     <a href="tel:${site.phoneE164}">${icon('phone')}Appeler</a>
     <a class="is-wa" href="${waLink(site)}" target="_blank" rel="noopener">${icon('whatsapp')}WhatsApp</a>
     <a class="is-cta" href="${root}reservation.html">Réserver</a>
@@ -127,7 +134,8 @@ export function layout(ctx, page) {
   const url = siteUrl ? `${siteUrl}/${page.path === 'index.html' ? '' : page.path}` : '';
   const ogImg = siteUrl ? `${siteUrl}/assets/img/${page.ogImage || 'og-default.jpg'}` : '';
   const ld = (page.jsonLd || []).filter(Boolean);
-  const top = header(ctx, page), bottom = footer(ctx);
+  const top = header(ctx, page), bottom = footer(ctx, page);
+  icon('x'); icon('whatsapp');   // utilisées par le panneau « fiche rapide » créé en JavaScript
   const sprite = takeSprite();   // après le rendu de tous les blocs : ne contient que les icônes réellement utilisées
   // Navigation « instantanée » : le navigateur précharge la page dès que le visiteur survole / touche un lien interne.
   const speculation = { prerender: [{ where: { and: [{ href_matches: '/*' }, { not: { href_matches: '/*\\?*' } }, { not: { selector_matches: '[target=_blank]' } }] }, eagerness: 'moderate' }], prefetch: [{ where: { href_matches: '/*' }, eagerness: 'moderate' }] };
@@ -140,8 +148,10 @@ export function layout(ctx, page) {
 <meta name="description" content="${esc(page.description)}">
 ${page.noindex ? '<meta name="robots" content="noindex">' : ''}
 ${url ? `<link rel="canonical" href="${url}">` : ''}
+<meta name="theme-color" content="#ffffff" media="(max-width: 640px) and (prefers-color-scheme: light)">
+<meta name="theme-color" content="#111c29" media="(max-width: 640px) and (prefers-color-scheme: dark)">
 <meta name="theme-color" content="${site.themeColor}">
-<meta name="color-scheme" content="light">
+<meta name="color-scheme" content="light dark">
 <meta name="format-detection" content="telephone=no">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="${esc(site.name)}">
