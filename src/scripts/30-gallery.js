@@ -34,7 +34,7 @@ FMB.register('gallery', function () {
     g.addEventListener('keydown', function (e) { if (e.key === 'ArrowLeft') show(idx - 1); if (e.key === 'ArrowRight') show(idx + 1); });
     var x0 = null, stage = $('.gallery-stage', g);
     // Dans une rangée qui défile (flotte sur téléphone), le balayage fait défiler la rangée, pas les photos
-    var inRow = function () { return FMB.mobile.matches && g.closest('.fleet-card'); };
+    var inRow = function () { return FMB.mobile.matches && g.closest('.fleet'); };
     stage.addEventListener('touchstart', function (e) { x0 = inRow() ? null : e.touches[0].clientX; }, { passive: true });
     stage.addEventListener('touchend', function (e) { if (x0 === null) return; var dx = e.changedTouches[0].clientX - x0; x0 = null; if (dx < -40) show(idx + 1); else if (dx > 40) show(idx - 1); });
     if (zoom) zoom.addEventListener('click', function () { openLightbox(zoom.dataset.full || main.currentSrc || main.src, main.alt); });

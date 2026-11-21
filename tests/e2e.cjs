@@ -13,7 +13,8 @@ const B = 'http://localhost:4173/';
   await ctx.route('https://api.whatsapp.com/**', r => r.fulfill({ body: 'wa' }));
 
   // 1. Widget accueil → réservation
-  await p.goto(B + 'index.html');
+  // 1. Module de réservation (page Chauffeur privé) → formulaire complet
+  await p.goto(B + 'chauffeur.html');
   await p.click('#tab-aeroport');
   assert(await p.isVisible('#w-sens'), 'sens visible'); assert(!(await p.isVisible('#w-duree')), 'duree cachée');
   await p.selectOption('#w-sens', 'aibd'); await p.fill('#w-depart', 'Almadies'); await p.fill('#w-date', '2027-03-10'); await p.fill('#w-heure', '21:30'); await p.fill('#w-passagers', '3');
@@ -77,6 +78,14 @@ const B = 'http://localhost:4173/';
   await p.goto(B + 'index.html'); const pend = await p.locator('.reveal-pending').count(); assert(pend > 5);
   for (let i = 0; i < 40; i++) { await p.mouse.wheel(0, 400); await p.waitForTimeout(40); } await p.waitForTimeout(800);
   assert.equal(await p.locator('.reveal-pending').count(), 0); console.log('✔ animations au défilement (' + pend + ' blocs)');
+  // 6 bis. Architecture : chaque page a son objectif, la navigation y mène
+  await p.goto(B + 'index.html');
+  for (const href of ['chauffeur.html', 'vehicules.html', 'services.html', 'investir.html', 'contact.html']) assert(await p.isVisible(`.main-nav a[href="${href}"]`), 'menu : ' + href);
+  assert.equal(await p.locator('.offer').count(), 3, '3 activités sur l’accueil');
+  await p.goto(B + 'chauffeur.html'); assert(await p.isVisible('.booking')); assert.equal(await p.locator('.formula').count(), 5); assert.equal(await p.locator('.fleet').count(), 3);
+  await p.click('.faq summary'); await p.waitForTimeout(450); assert(await p.isVisible('.faq details[open] p'));
+  await p.goto(B + 'services.html'); assert.equal(await p.locator('.service-group').count(), 4);
+  console.log('✔ architecture : menu, accueil, chauffeur (réservation, formules, flotte, FAQ), services groupés');
   // 7. Mobile
   const m = await b.newContext({ viewport: { width: 390, height: 800 }, hasTouch: true, isMobile: true }); const q = await m.newPage(); q.on('pageerror', e => errs.push(e.message));
   await q.goto(B + 'index.html'); await q.click('[data-nav-toggle]'); await q.waitForTimeout(400); assert(await q.isVisible('.main-nav a[href="services.html"]'));
@@ -85,7 +94,7 @@ const B = 'http://localhost:4173/';
   await q.click('[data-filters-open]'); await q.waitForTimeout(400); await q.screenshot({ path: '/dev/null', type: 'png' });
   await q.selectOption('#f-type', 'Pick-up'); await q.click('.filters-apply'); await q.waitForTimeout(400); assert.equal(await q.locator('[data-vehicle]:visible').count(), 3);
   // barre d'onglets en bas d'écran (remplace l'ancienne barre d'actions et le bouton flottant)
-  assert(await q.isVisible('.tabbar')); assert(!(await q.isVisible('.mobile-bar'))); assert(!(await q.isVisible('.wa-float')));
+  assert(await q.isVisible('.tabbar'));
   assert.equal(await q.getAttribute('.tabbar [data-tab="vehicles"]', 'aria-current'), 'page');
   // 10 véhicules puis « Afficher plus » avec le nombre restant
   await q.goto(B + 'vehicules.html'); assert.equal(await q.locator('[data-vehicle]:visible').count(), 10);

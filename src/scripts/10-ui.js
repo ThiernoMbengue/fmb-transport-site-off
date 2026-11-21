@@ -23,7 +23,7 @@ FMB.register('ui', function () {
     toggle.addEventListener('click', function () { setOpen(!nav.classList.contains('is-open')); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && nav.classList.contains('is-open')) { setOpen(false); toggle.focus(); } });
     nav.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
-    window.matchMedia('(min-width: 1081px)').addEventListener('change', function () { setOpen(false); });
+    window.matchMedia('(min-width: 901px)').addEventListener('change', function () { setOpen(false); });
   }
 
   // Bandeau de démonstration (masquable, mémorisé pour la session)

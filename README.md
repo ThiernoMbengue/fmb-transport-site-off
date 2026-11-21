@@ -1,4 +1,4 @@
-# FMB Transport — site web (version 2.1)
+# FMB Transport — site web (version 3.0)
 
 Site vitrine et commercial de **FMB Trans-Mobilité Services** (Dakar) : réservation de chauffeur,
 vente de véhicules, services, investissement. Site **statique** (aucun serveur, aucune base de données) :
@@ -27,8 +27,7 @@ Fonctionne aussi sur **Vercel** (configuration fournie dans `vercel.json` : il s
 | Les questions fréquentes                      | `src/data/faq.json`                  |
 | La liste des services                         | `src/data/services.json`             |
 | Les chiffres du tableau de bord investisseur  | `src/data/dashboard.json`            |
-| Les couleurs, polices, arrondis               | `src/styles/01-tokens.css`           |
-| L'affichage téléphone et le mode sombre       | `src/styles/05-mobile.css`           |
+| Les couleurs (clair et sombre), tailles, rayons | `src/styles/01-tokens.css`         |
 
 Puis reconstruire : `node build.mjs` (Node 18 ou plus, **aucune installation**).
 
@@ -83,9 +82,22 @@ dist/                  ► Site prêt à publier
 Ajouter une page : créer `src/pages/ma-page.mjs`, l'ajouter à la liste `builders` de `build.mjs`.
 Ajouter une fonctionnalité : créer `src/scripts/80-ma-fonction.js` avec `FMB.register('nom', function () { … })`.
 
+## Pages
+
+| Page | Objectif |
+|---|---|
+| Accueil (`index.html`) | Présenter l'entreprise et orienter vers ses trois métiers |
+| Chauffeur privé (`chauffeur.html`) | Réserver, comparer les formules, voir la flotte, questions fréquentes |
+| Réservation (`reservation.html`) | Formulaire complet, envoi sur WhatsApp |
+| Véhicules à vendre (`vehicules.html` + une fiche par véhicule) | Catalogue filtrable, fiche détaillée, rendez-vous |
+| Services (`services.html`) | Offres classées par type de client |
+| Investir (`investir.html`) | Investissement participatif, tableau de bord |
+| Contact (`contact.html`) | WhatsApp, appel, e-mail, formulaire |
+
+Feuilles de style : `01-tokens` (couleurs, typographie, espacements, thème sombre) → `02-base` → `03-layout` (en-tête, menu, barre d'onglets, pied de page) → `04-components` (boutons, cartes, formulaires, panneaux) → `05-pages`.
+
 ## Ce qui est en place
 
-- **Téléphone (≤ 640 px)** : affichage type application — barre d'onglets en bas (Accueil, Véhicules, Appeler, Favoris, WhatsApp), premier écran complet (titre, réservation, services), cartes en 2 colonnes, fiche rapide et filtres en panneau qui monte du bas, 10 véhicules puis « Afficher plus », textes courts dédiés, mode clair et sombre. Feuille dédiée : `src/styles/05-mobile.css` ; textes courts via `rs(long, court)` dans `src/components/util.mjs`.
 - **Design** : identité issue du logo (bleus FMB + ambre), typographies auto-hébergées, animations légères, responsive mobile / tablette / ordinateur, barre d'action fixe sur mobile.
 - **Fonctionnalités** : réservation multi-services avec validation et récapitulatif en direct, catalogue avec recherche / filtres / tri / favoris / lien partageable, fiche véhicule (galerie, plein écran, rendez-vous, partage, fiche PDF), formulaire de contact WhatsApp ou e-mail, notifications, états vides, page 404.
 - **Performance** : aucun framework, 1 CSS + 1 JS (≈ 11 Ko + 9 Ko compressés), images AVIF + WebP en 4 tailles avec chargement différé, préchargement des pages au survol, polices préchargées, cache longue durée. Lighthouse : 99 à 100 sur les pages testées.
