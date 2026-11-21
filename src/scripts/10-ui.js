@@ -71,6 +71,18 @@ FMB.register('ui', function () {
     document.addEventListener('touchstart', warm, { capture: true, passive: true });
   }
 
+  // Textes d'aide courts sur téléphone (ils ne doivent jamais être coupés)
+  var ph = $$('[data-ph-sm]');
+  ph.forEach(function (i) { i.dataset.phLg = i.placeholder; });
+  var setPh = function () { ph.forEach(function (i) { i.placeholder = FMB.mobile.matches ? i.dataset.phSm : i.dataset.phLg; }); };
+  setPh(); FMB.mobile.addEventListener('change', setPh);
+
+  // Barre d'onglets : « Favoris » est l'onglet actif quand on regarde ses favoris
+  if (/[?&]favoris=1/.test(location.search)) {
+    $$('.tabbar [aria-current]').forEach(function (a) { a.removeAttribute('aria-current'); });
+    var fav = $('.tabbar [data-tab="favs"]'); if (fav) fav.setAttribute('aria-current', 'page');
+  }
+
   // Dates : pas de date passée
   var today = FMB.todayISO();
   $$('input[type="date"]').forEach(function (i) { i.min = today; });

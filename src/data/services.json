@@ -1,10 +1,82 @@
 [
-  { "id": "gestion-location", "icon": "key", "title": "Gestion de véhicules de location", "text": "Mise en location, suivi des locations, entretien et relevés réguliers pour vos véhicules.", "cta": "En savoir plus", "wa": "Bonjour FMB, je souhaite des informations sur la gestion de véhicules de location." },
-  { "id": "gestion-bus", "icon": "bus", "title": "Gestion de bus", "text": "Exploitation et suivi de bus pour le transport collectif et le transport scolaire.", "cta": "En savoir plus", "wa": "Bonjour FMB, je souhaite des informations sur la gestion de bus." },
-  { "id": "yango", "icon": "phone-car", "title": "Exploitation sur Yango", "text": "Mise en service de véhicules sur la plateforme Yango, avec des chauffeurs suivis au quotidien.", "cta": "En savoir plus", "wa": "Bonjour FMB, je souhaite des informations sur l’exploitation de véhicules sur Yango." },
-  { "id": "confier", "icon": "handshake", "title": "Gestion de votre véhicule", "text": "Vous possédez un véhicule ? Confiez-le-nous : nous le mettons en service et le gérons pour vous.", "cta": "Confier mon véhicule", "wa": "Bonjour FMB, je possède un véhicule et je souhaite vous le confier pour qu’il soit géré." },
-  { "id": "vente", "icon": "tag", "title": "Vente de véhicules", "text": "Des véhicules dédouanés, avec tous les frais inclus dans le prix annoncé.", "cta": "Voir les véhicules", "href": "vehicules.html" },
-  { "id": "courtage", "icon": "search", "title": "Achat en courtage", "text": "Vous cherchez un véhicule précis ? Nous le trouvons et l’achetons pour vous.", "cta": "En savoir plus", "wa": "Bonjour FMB, je souhaite acheter un véhicule en courtage. Voici le modèle et le budget recherchés : " },
-  { "id": "investissement", "icon": "chart", "title": "Investissement participatif", "text": "Participez au financement de véhicules et suivez leur activité dans un tableau de bord.", "cta": "Découvrir", "href": "investir.html" },
-  { "id": "scolaire", "icon": "school", "title": "Transport scolaire", "text": "Un service régulier pour les élèves. Contactez-nous pour étudier votre trajet et vos horaires.", "cta": "Nous contacter", "wa": "Bonjour FMB, je souhaite des informations sur le transport scolaire." }
+  {
+    "id": "gestion-location",
+    "icon": "key",
+    "title": "Gestion de véhicules de location",
+    "text": "Mise en location, suivi des locations, entretien et relevés réguliers pour vos véhicules.",
+    "cta": "En savoir plus",
+    "wa": "Bonjour FMB, je souhaite des informations sur la gestion de véhicules de location.",
+    "short": "Location",
+    "ctaShort": "Infos"
+  },
+  {
+    "id": "gestion-bus",
+    "icon": "bus",
+    "title": "Gestion de bus",
+    "text": "Exploitation et suivi de bus pour le transport collectif et le transport scolaire.",
+    "cta": "En savoir plus",
+    "wa": "Bonjour FMB, je souhaite des informations sur la gestion de bus.",
+    "short": "Bus",
+    "ctaShort": "Infos"
+  },
+  {
+    "id": "yango",
+    "icon": "phone-car",
+    "title": "Exploitation sur Yango",
+    "text": "Mise en service de véhicules sur la plateforme Yango, avec des chauffeurs suivis au quotidien.",
+    "cta": "En savoir plus",
+    "wa": "Bonjour FMB, je souhaite des informations sur l’exploitation de véhicules sur Yango.",
+    "short": "Yango",
+    "ctaShort": "Infos"
+  },
+  {
+    "id": "confier",
+    "icon": "handshake",
+    "title": "Gestion de votre véhicule",
+    "text": "Vous possédez un véhicule ? Confiez-le-nous : nous le mettons en service et le gérons pour vous.",
+    "cta": "Confier mon véhicule",
+    "wa": "Bonjour FMB, je possède un véhicule et je souhaite vous le confier pour qu’il soit géré.",
+    "short": "Confier",
+    "ctaShort": "Confier"
+  },
+  {
+    "id": "vente",
+    "icon": "tag",
+    "title": "Vente de véhicules",
+    "text": "Des véhicules dédouanés, avec tous les frais inclus dans le prix annoncé.",
+    "cta": "Voir les véhicules",
+    "href": "vehicules.html",
+    "short": "Vente",
+    "ctaShort": "Voir"
+  },
+  {
+    "id": "courtage",
+    "icon": "search",
+    "title": "Achat en courtage",
+    "text": "Vous cherchez un véhicule précis ? Nous le trouvons et l’achetons pour vous.",
+    "cta": "En savoir plus",
+    "wa": "Bonjour FMB, je souhaite acheter un véhicule en courtage. Voici le modèle et le budget recherchés : ",
+    "short": "Courtage",
+    "ctaShort": "Infos"
+  },
+  {
+    "id": "investissement",
+    "icon": "chart",
+    "title": "Investissement participatif",
+    "text": "Participez au financement de véhicules et suivez leur activité dans un tableau de bord.",
+    "cta": "Découvrir",
+    "href": "investir.html",
+    "short": "Investir",
+    "ctaShort": "Voir"
+  },
+  {
+    "id": "scolaire",
+    "icon": "school",
+    "title": "Transport scolaire",
+    "text": "Un service régulier pour les élèves. Contactez-nous pour étudier votre trajet et vos horaires.",
+    "cta": "Nous contacter",
+    "wa": "Bonjour FMB, je souhaite des informations sur le transport scolaire.",
+    "short": "Scolaire",
+    "ctaShort": "Contact"
+  }
 ]

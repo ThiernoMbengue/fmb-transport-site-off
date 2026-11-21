@@ -1,5 +1,5 @@
 import { icon } from '../components/icons.mjs';
-import { esc, picture, waLink } from '../components/util.mjs';
+import { esc, picture, waLink, rs } from '../components/util.mjs';
 import { bookingWidget, fleetCard, vehicleCard, faq, faqLd, reviews, ctaBand } from '../components/sections.mjs';
 
 export default function home(ctx) {
@@ -18,11 +18,11 @@ export default function home(ctx) {
     <div class="hero-copy">
       <span class="eyebrow">Chauffeur privé · Dakar &amp; AIBD</span>
       <h1>Réservez votre <em>chauffeur</em> à Dakar</h1>
-      <p class="lead">Transfert aéroport AIBD, chauffeur à la journée ou sur plusieurs jours, location longue durée. Choisissez votre véhicule, envoyez votre demande : la confirmation se fait sur WhatsApp.</p>
+      <p class="lead">${rs('Transfert aéroport AIBD, chauffeur à la journée ou sur plusieurs jours, location longue durée. Choisissez votre véhicule, envoyez votre demande : la confirmation se fait sur WhatsApp.', 'Devis et confirmation sur WhatsApp.')}</p>
       <ul class="hero-trust">
-        <li>${icon('check-circle')}Photos réelles des véhicules</li>
-        <li>${icon('check-circle')}Tarif sur devis</li>
-        <li>${icon('check-circle')}Réponse sur WhatsApp</li>
+        <li>${icon('check-circle')}${rs('Photos réelles des véhicules', 'Photos réelles')}</li>
+        <li>${icon('check-circle')}${rs('Tarif sur devis', 'Sur devis')}</li>
+        <li>${icon('check-circle')}${rs('Réponse sur WhatsApp', 'Sans paiement')}</li>
       </ul>
       <div class="cluster">
         <a class="btn btn--cta" href="#reserver">Réserver maintenant${icon('arrow-right')}</a>
@@ -30,7 +30,7 @@ export default function home(ctx) {
       </div>
     </div>
     <div class="hero-visual">
-      <div class="hero-main">${picture(ctx, 'qm3-bleu-avant', 'Renault QM3 bleue de FMB Transport', { sizes: '(min-width: 900px) 580px, 92vw', eager: true, max: 800 })}</div>
+      <div class="hero-main">${picture(ctx, 'qm3-bleu-avant', 'Renault QM3 bleue de FMB Transport', { sizes: '(min-width: 900px) 580px, 92vw', eager: true, max: 800, skipPhone: true })}</div>
       <div class="hero-float hero-float--a"><span class="ico-tile">${icon('plane')}</span><span><strong>Transfert AIBD</strong>Dakar ⇄ aéroport, dans les deux sens</span></div>
       <div class="hero-float hero-float--b"><span class="ico-tile">${icon('whatsapp')}</span><span><strong>Confirmation WhatsApp</strong>Sans paiement en ligne</span></div>
     </div>
@@ -55,9 +55,9 @@ export default function home(ctx) {
       <div>
         <span class="eyebrow">Notre flotte avec chauffeur</span>
         <h2 id="flotte-title">${data.fleet.length} véhicules disponibles</h2>
-        <p class="lead">Des Renault QM3 confortables, climatisées, 5 places. Parcourez les photos, puis réservez celui qui vous convient.</p>
+        <p class="lead">${rs('Des Renault QM3 confortables, climatisées, 5 places. Parcourez les photos, puis réservez celui qui vous convient.', 'Renault QM3 climatisées, 5 places · tarif sur devis.')}</p>
       </div>
-      <a class="link-arrow" href="#reserver">Demander un devis${icon('arrow-right')}</a>
+      <a class="link-arrow lg" href="#reserver">Demander un devis${icon('arrow-right')}</a>
     </div>
     <div class="grid grid--3">
       ${data.fleet.map((c) => `<div data-reveal>${fleetCard(ctx, c)}</div>`).join('\n      ')}
@@ -79,15 +79,15 @@ export default function home(ctx) {
   </div>
 </section>
 
-<section class="section section--white" aria-labelledby="vente-title">
+<section class="section section--white home-vente" aria-labelledby="vente-title">
   <div class="container">
     <div class="section-head section-head--row" data-reveal>
       <div>
         <span class="eyebrow">Vente de véhicules</span>
         <h2 id="vente-title">Des véhicules dédouanés, tout compris</h2>
-        <p class="lead">Dédouanement et frais inclus dans le prix annoncé. ${data.vehicles.length} véhicules à découvrir dans le catalogue.</p>
+        <p class="lead">${rs(`Dédouanement et frais inclus dans le prix annoncé. ${data.vehicles.length} véhicules à découvrir dans le catalogue.`, `${data.vehicles.length} véhicules, dédouanement et frais inclus.`)}</p>
       </div>
-      <a class="btn btn--outline" href="${root}vehicules.html">Voir tout le catalogue${icon('arrow-right')}</a>
+      <a class="btn btn--outline" href="${root}vehicules.html">${rs('Voir tout le catalogue', 'Tout voir')}${icon('arrow-right')}</a>
     </div>
     <div class="vgrid">
       ${featured.map((v) => `<div data-reveal>${vehicleCard(ctx, v)}</div>`).join('\n      ')}
@@ -95,18 +95,19 @@ export default function home(ctx) {
   </div>
 </section>
 
-<section class="section" aria-labelledby="services-title">
+<section class="section home-services" aria-labelledby="services-title">
   <div class="container">
     <div class="section-head section-head--row" data-reveal>
       <div>
         <span class="eyebrow">Au-delà du transport</span>
-        <h2 id="services-title">Gestion, achat, vente et investissement</h2>
-        <p class="lead">FMB accompagne aussi les propriétaires, les entreprises et les investisseurs.</p>
+        <h2 id="services-title">${rs('Gestion, achat, vente et investissement', 'Nos autres services')}</h2>
+        <p class="lead lg">FMB accompagne aussi les propriétaires, les entreprises et les investisseurs.</p>
       </div>
-      <a class="link-arrow" href="${root}services.html">Tous les services${icon('arrow-right')}</a>
+      <a class="link-arrow" href="${root}services.html">${rs('Tous les services', 'Tout voir')}${icon('arrow-right')}</a>
     </div>
     <div class="grid grid--4">
-      ${data.services.slice(0, 4).map((s) => `<article class="service-card" data-reveal><span class="ico-tile">${icon(s.icon)}</span><h3>${esc(s.title)}</h3><p>${esc(s.text)}</p><a class="link-arrow" href="${root}services.html#${s.id}">Découvrir${icon('arrow-right')}</a></article>`).join('\n      ')}
+      ${data.services.slice(0, 4).map((s) => `<article class="service-card" data-reveal><span class="ico-tile">${icon(s.icon)}</span><h3>${rs(esc(s.title), esc(s.short))}</h3><p>${esc(s.text)}</p><a class="link-arrow" href="${root}services.html#${s.id}">Découvrir${icon('arrow-right')}</a></article>`).join('\n      ')}
+      <a class="service-card service-more" href="${root}services.html"><span class="ico-tile">${icon('plus')}</span><span>Tout voir</span></a>
     </div>
   </div>
 </section>
@@ -129,8 +130,8 @@ export default function home(ctx) {
     <div class="section-head" data-reveal>
       <span class="eyebrow">Questions fréquentes</span>
       <h2 id="faq-title">Vos questions, nos réponses</h2>
-      <p class="lead">Une autre question ? Écrivez-nous sur WhatsApp, nous vous répondons directement.</p>
-      <div><a class="btn btn--wa" href="${waLink(site)}" target="_blank" rel="noopener">${icon('whatsapp')}Poser ma question</a></div>
+      <p class="lead lg">Une autre question ? Écrivez-nous sur WhatsApp, nous vous répondons directement.</p>
+      <div class="lg"><a class="btn btn--wa" href="${waLink(site)}" target="_blank" rel="noopener">${icon('whatsapp')}Poser ma question</a></div>
     </div>
     <div data-reveal>${faq(data.faq)}</div>
   </div>

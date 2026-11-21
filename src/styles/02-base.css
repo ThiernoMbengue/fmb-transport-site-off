@@ -19,13 +19,16 @@ img { height: auto; }
 button, input, select, textarea { font: inherit; color: inherit; }
 button { cursor: pointer; }
 a { color: var(--blue-600); text-underline-offset: 3px; }
-a:hover { color: var(--navy-800); }
+a:hover { color: var(--brand-ink); }
 h1, h2, h3, h4 { font-family: var(--font-display); color: var(--ink); line-height: 1.12; letter-spacing: -0.02em; text-wrap: balance; font-weight: 700; }
 h1 { font-size: var(--fs-3xl); letter-spacing: -0.035em; }
 h2 { font-size: var(--fs-2xl); }
 h3 { font-size: var(--fs-xl); }
 p { text-wrap: pretty; }
 [hidden] { display: none !important; }
+/* Textes en deux versions (voir rs() dans util.mjs) : la courte n'apparaît que sur téléphone */
+.sm { display: none; }
+.tabbar, .vcard-actions, .service-card.service-more { display: none; }
 /* Anneau de focus bicolore : visible sur fond clair COMME sur fond sombre */
 :focus-visible { outline: 3px solid var(--amber-500); outline-offset: 2px; border-radius: 4px; box-shadow: 0 0 0 2px var(--navy-900); }
 :focus:not(:focus-visible) { outline: 0; }
@@ -35,14 +38,14 @@ p { text-wrap: pretty; }
 .section { padding-block: var(--section); }
 .section--tight { padding-block: calc(var(--section) * 0.6); }
 .section--white { background: var(--surface); }
-.section--dark { background: var(--navy-900); color: #c5d6e6; }
-.section--dark h2, .section--dark h3 { color: #fff; }
+.section--dark { background: var(--navy-900); color: var(--on-navy-2); }
+.section--dark h2, .section--dark h3 { color: var(--on-navy); }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .skip-link { position: absolute; left: 12px; top: -60px; z-index: 200; background: var(--amber-500); color: var(--navy-900); font-weight: 800; padding: 10px 16px; border-radius: var(--r-sm); text-decoration: none; transition: top .15s; }
 .skip-link:focus { top: 12px; }
 .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: var(--fs-xs); font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue-600); }
 .eyebrow::before { content: ""; width: 22px; height: 2px; background: var(--amber-500); border-radius: 2px; }
-.section--dark .eyebrow, .hero .eyebrow, .page-hero .eyebrow { color: #8ec3e6; }
+.section--dark .eyebrow, .hero .eyebrow, .page-hero .eyebrow { color: var(--eyebrow-on-navy); }
 .lead { font-size: var(--fs-lg); color: var(--muted); max-width: 62ch; }
 .section-head { display: grid; gap: 14px; margin-bottom: clamp(28px, 4vw, 48px); max-width: 760px; }
 .section-head--row { max-width: none; display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 20px; }

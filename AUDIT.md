@@ -85,3 +85,24 @@ Audit responsive : 20 débordements horizontaux et 93 éléments hors écran →
   (temps de blocage : 10 ms). Les 25 fiches sont dans le HTML pour le référencement.
 - **Prérendu complet des pages** : le préchargement au survol est vérifié ; le prérendu dépend du navigateur du visiteur
   et n'a pas pu être observé dans le navigateur de test.
+
+## Version 2.2 — refonte de l'affichage téléphone
+
+Méthode : captures écran par écran sur iPhone 13 simulé (390 px), en clair et en sombre, avant et après ;
+audit automatique sur 320, 360, 390 et 430 px (débordements, cibles tactiles, textes coupés, contrastes WCAG) ;
+comparaison pixel à pixel de l'ordinateur et de la tablette (1440, 1024, 768 et 700 px) avec la version 2.1 : 80 captures identiques.
+
+| Page | Hauteur avant | Hauteur après | Gain |
+|---|---|---|---|
+| Accueil | 13 290 px (20 écrans) | 4 106 px (6,2 écrans) | −69 % |
+| Catalogue | 9 385 px | 2 866 px | −69 % |
+| Fiche véhicule | 5 984 px | 2 919 px | −51 % |
+| Réservation | 4 046 px | 2 280 px | −44 % |
+| Services | 7 021 px | 2 567 px | −63 % |
+| Investir | 4 837 px | 2 263 px | −53 % |
+| Contact | 3 305 px | 1 722 px | −48 % |
+
+Défilement horizontal : 0 px partout. Console JavaScript : aucune erreur. Lighthouse mobile : 99 à 100 en performance, 100 en accessibilité.
+
+Le mode sombre est limité au téléphone (≤ 640 px), puisque l'affichage ordinateur ne devait pas changer ; il peut être étendu
+à tous les écrans en déplaçant le bloc « Mode sombre » de `05-mobile.css` hors de sa condition de largeur.

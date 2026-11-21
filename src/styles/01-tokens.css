@@ -19,6 +19,7 @@
 @font-face { font-family: "Manrope Fallback"; src: local("Arial"), local("Helvetica Neue"), local("Liberation Sans"); size-adjust: 102.3%; ascent-override: 104.2%; descent-override: 29.3%; line-gap-override: 0%; }
 @font-face { font-family: "Bricolage Fallback"; src: local("Arial Bold"), local("Arial"), local("Liberation Sans Bold"); font-weight: 700; size-adjust: 101.7%; ascent-override: 91.4%; descent-override: 26.5%; line-gap-override: 0%; }
 :root {
+  color-scheme: light;
   /* Couleurs de marque (issues du logo FMB) */
   --navy-950: #051526;
   --navy-900: #071d33;
@@ -41,6 +42,37 @@
   --line-strong: #bccddc;
   --surface: #ffffff;
   --bg: #f6f9fc;
+  /* Rôles de couleur : tout le site passe par ces variables (le mode sombre ne redéfinit que celles-ci) */
+  --brand-ink: var(--navy-800);      /* texte de marque sur fond clair (titres de prix, liens forts) */
+  --fill-strong: var(--navy-800);    /* petits aplats de marque avec texte blanc (pastilles, boutons pleins) */
+  --media-bg: #e6edf3;               /* fond des photos pendant le chargement */
+  --header-bg: rgba(255, 255, 255, .88);
+  --bar-bg: rgba(255, 255, 255, .94);
+  --glass: rgba(255, 255, 255, .94);  /* boutons posés sur les photos (identiques dans les deux thèmes) */
+  --glass-solid: #fff;
+  --on-glass: var(--navy-900);
+  --amber-line: #f5dfae;
+  --amber-ink: #6b4700;
+  --amber-ink-strong: #5c3d00;
+  --amber-hover: rgba(92, 61, 0, .1);
+  --ok-line: #bfe6d4;
+  --err-line: #f4c5c0;
+  --err-ink: #8f241c;
+  --err-surface: #fffafa;
+  --fav: #d8324a;
+  /* Textes posés sur les fonds bleu nuit (héros, bandeaux, pied de page) : identiques dans les deux thèmes */
+  --on-navy: #fff;
+  --on-navy-1: #dbe8f3;
+  --on-navy-1b: #e3edf6;
+  --on-navy-2: #c5d6e6;
+  --on-navy-3: #b9cde0;
+  --on-navy-4: #9db8d0;
+  --on-navy-5: #8fa9c1;
+  --on-navy-footer: #9db3c8;
+  --eyebrow-on-navy: #8ec3e6;
+  --chart-grid: #dbe5ee;
+  --chart-label: #5c7389;
+  --select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='none' stroke='%230b2a4a' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 8 5 5 5-5'/%3E%3C/svg%3E");
   /* États */
   --ok: #0b6b4b;             /* 5,6:1 sur --ok-bg (AA) */
   --ok-bg: #e4f6ee;
@@ -48,6 +80,7 @@
   --err-bg: #fdecea;
   --wa: #0f7a41;             /* vert WhatsApp assombri : 5,3:1 avec du texte blanc (AA) */
   --wa-dark: #0b6234;
+  --wa-text: var(--wa);       /* WhatsApp en couleur de texte (plus clair en mode sombre) */
   /* Typographie */
   --font-display: "Bricolage Grotesque", "Bricolage Fallback", system-ui, sans-serif;
   --font-text: "Manrope", "Manrope Fallback", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;

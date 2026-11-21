@@ -1,6 +1,7 @@
 // Bibliothèque d'icônes (traits, 24×24). Ajouter une icône = ajouter une entrée ici.
 // Le style du trait (épaisseur, extrémités) est défini une seule fois en CSS : classe .i
 const P = {
+  home: '<path d="m3.5 11 8.5-7 8.5 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5.5h4V20"/>',
   'arrow-right': '<path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>',
   'chevron-left': '<path d="m15 18-6-6 6-6"/>',
   'chevron-right': '<path d="m9 18 6-6-6-6"/>',
