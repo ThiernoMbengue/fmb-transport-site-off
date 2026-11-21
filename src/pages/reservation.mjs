@@ -5,15 +5,15 @@ import { breadcrumb } from '../components/layout.mjs';
 
 export default function reservation(ctx) {
   const { site, data } = ctx;
-  const crumbs = [{ label: 'Réservation' }];
+  const crumbs = [{ label: 'Chauffeur privé', href: 'chauffeur.html' }, { label: 'Réservation' }];
   const body = `
-<section class="section section--tight">
+<section class="section section--tight reserve-page">
   <div class="container">
-    ${breadcrumb(ctx, crumbs, true)}
+    ${breadcrumb(ctx, crumbs)}
     <div data-reserve-form>
-      <div class="section-head" style-reset>
-        <h1 class="h-page">Finalisez votre réservation</h1>
-        <p class="lead">${rs('Vérifiez votre trajet, ajoutez vos coordonnées, puis envoyez votre demande sur WhatsApp. Les champs marqués d’un * sont obligatoires.', 'Trois étapes, puis envoi sur WhatsApp. * obligatoire.')}</p>
+      <div class="reserve-head">
+        <h1>Finalisez votre réservation</h1>
+        <p class="lead">${rs('Vérifiez votre trajet, ajoutez vos coordonnées, puis envoyez votre demande sur WhatsApp. Les champs marqués d’un * sont obligatoires.', 'Trois étapes, puis envoi sur WhatsApp.')}</p>
       </div>
       <form class="reserve" data-booking="full" novalidate>
         <div>
@@ -36,8 +36,8 @@ export default function reservation(ctx) {
           <fieldset class="form-block">
             <legend class="form-step"><span class="n">3</span>Vos coordonnées</legend>
             <div class="form-grid">
-              <div class="field" data-field="nom"><label for="r-nom">Nom et prénom <span aria-hidden="true">*</span></label><input class="input" id="r-nom" name="nom" type="text" placeholder="Par exemple Awa Diop" autocomplete="name" maxlength="80" required><span class="field-error" data-error hidden></span></div>
-              <div class="field" data-field="telephone"><label for="r-telephone">Téléphone ou WhatsApp <span aria-hidden="true">*</span></label><input class="input" id="r-telephone" name="telephone" type="tel" inputmode="tel" placeholder="+221 77 000 00 00" autocomplete="tel" maxlength="24" required><span class="field-error" data-error hidden></span></div>
+              <div class="field field--full" data-field="nom"><label for="r-nom">Nom et prénom <span aria-hidden="true">*</span></label><input class="input" id="r-nom" name="nom" type="text" placeholder="Par exemple Awa Diop" autocomplete="name" maxlength="80" required><span class="field-error" data-error hidden></span></div>
+              <div class="field field--full" data-field="telephone"><label for="r-telephone">Téléphone ou WhatsApp <span aria-hidden="true">*</span></label><input class="input" id="r-telephone" name="telephone" type="tel" inputmode="tel" placeholder="+221 77 000 00 00" autocomplete="tel" maxlength="24" required><span class="field-error" data-error hidden></span></div>
               <div class="field span-all" data-field="precisions"><label for="r-precisions">Précisions <span class="opt">(facultatif)</span></label><textarea class="textarea" id="r-precisions" name="precisions" placeholder="Bagages, enfants, arrêts souhaités, autre besoin…" data-ph-sm="Bagages, enfants…" maxlength="500"></textarea></div>
             </div>
           </fieldset>
@@ -55,19 +55,19 @@ export default function reservation(ctx) {
       </form>
     </div>
     <div class="success" data-reserve-success hidden tabindex="-1">
-      <span class="ico-tile">${icon('check')}</span>
+      <span class="success-ico">${icon('check')}</span>
       <h2>Dernière étape : envoyez le message sur WhatsApp</h2>
       <p>WhatsApp s’est ouvert avec votre demande déjà rédigée. Appuyez sur « Envoyer » pour la transmettre à notre équipe : elle vous répond avec le tarif et la confirmation de disponibilité.</p>
       <dl class="recap-list" data-success-list></dl>
-      <div class="cluster">
+      <div class="success-actions">
         <a class="btn btn--wa" href="#" target="_blank" rel="noopener" data-success-wa>${icon('whatsapp')}Rouvrir WhatsApp</a>
-        <button class="btn btn--outline" type="button" data-success-edit>Modifier ma demande</button>
-        <button class="btn btn--outline" type="button" data-success-new>Nouvelle réservation</button>
+        <button class="btn btn--secondary" type="button" data-success-edit>Modifier ma demande</button>
+        <button class="btn btn--secondary" type="button" data-success-new>Nouvelle réservation</button>
       </div>
       <p class="recap-note">WhatsApp ne s’ouvre pas ? Appelez-nous au <a href="tel:${site.phoneE164}">${site.phoneDisplay}</a>.</p>
     </div>
   </div>
-</section>`.replace(' style-reset', '');
+</section>`;
   return {
     id: 'reservation', path: 'reservation.html', nav: 'home',
     title: 'Réserver un chauffeur à Dakar — FMB Transport',

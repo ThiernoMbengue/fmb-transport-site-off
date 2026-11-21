@@ -106,3 +106,18 @@ Défilement horizontal : 0 px partout. Console JavaScript : aucune erreur. Light
 
 Le mode sombre est limité au téléphone (≤ 640 px), puisque l'affichage ordinateur ne devait pas changer ; il peut être étendu
 à tous les écrans en déplaçant le bloc « Mode sombre » de `05-mobile.css` hors de sa condition de largeur.
+
+## Version 3.0 — refonte complète (architecture et direction artistique)
+
+Référence étudiée : yoon-app.com (rendue et capturée sur ordinateur et téléphone). Retenu : une seule police,
+fonds alternés blanc / gris chaud / bleu nuit, beaucoup d'air, boutons « pilule », cartes photo avec texte posé dessus,
+une idée par section. Non repris : l'esthétique propre à Yoon (motifs, vert, titres en capitales).
+
+- **Architecture** : l'accueil présente l'entreprise et oriente ; la réservation a sa page « Chauffeur privé »
+  (module, formules, flotte, déroulé, FAQ) ; les services sont classés par type de client ; le contact met
+  les trois moyens directs en premier.
+- **Design** : nouveau système (une police, palette sobre, tailles réduites, rayons et ombres harmonisés),
+  thème sombre sur tous les écrans, un seul appel à l'action final par page.
+- **Vérifications** : 12 tailles d'écran × 11 pages × 2 thèmes sans défaut ; Lighthouse 100 sur toutes les pages
+  testées (mobile et ordinateur) ; parcours de bout en bout verts ; aucune erreur JavaScript.
+- Les transitions animées entre pages ont été retirées : elles produisaient des erreurs intermittentes dans le navigateur.

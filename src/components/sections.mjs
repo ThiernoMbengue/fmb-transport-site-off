@@ -1,14 +1,41 @@
-// Blocs réutilisables : cartes véhicule, galerie, FAQ, avis, module de réservation, bandeau contact.
+// Blocs réutilisables : en-têtes de page et de section, cartes, galerie, réservation, FAQ, avis, appel à l'action.
+// Chaque bloc a une seule définition ; les pages ne font que les assembler.
 import { icon } from './icons.mjs';
 import { esc, fmtInt, fmtPrice, picture, imgUrl, srcset, vehicleName, waLink, rs } from './util.mjs';
 
+/* Les formules de transport avec chauffeur (source unique : onglets, formulaire, page Chauffeur) */
 export const SERVICES = [
-  { id: 'journee', label: 'Chauffeur', short: 'Chauffeur', long: 'Chauffeur à la journée', icon: 'user' },
-  { id: 'duree', label: 'Plusieurs jours', short: 'Multi-jours', long: 'Chauffeur sur plusieurs jours', icon: 'calendar' },
-  { id: 'aeroport', label: 'Aéroport AIBD', short: 'Aéroport', long: 'Transfert aéroport AIBD', icon: 'plane' },
-  { id: 'longue', label: 'Longue durée', short: 'Location', long: 'Location longue durée', icon: 'key' },
-  { id: 'ville', label: 'En ville', short: 'En ville', long: 'Trajet en ville', icon: 'route' }
+  { id: 'journee', label: 'Chauffeur', short: 'Journée', long: 'Chauffeur à la journée', icon: 'user', text: 'Un chauffeur à votre disposition pour une demi-journée ou une journée complète.' },
+  { id: 'duree', label: 'Plusieurs jours', short: 'Jours', long: 'Chauffeur sur plusieurs jours', icon: 'calendar', text: 'Missions, séjours, événements : le même chauffeur du premier au dernier jour.' },
+  { id: 'aeroport', label: 'Aéroport AIBD', short: 'AIBD', long: 'Transfert aéroport AIBD', icon: 'plane', text: 'Accueil à l’arrivée ou dépose à l’aéroport, dans les deux sens, de jour comme de nuit.' },
+  { id: 'longue', label: 'Longue durée', short: 'Location', long: 'Location longue durée', icon: 'key', text: 'Un véhicule pour 1 à 12 mois, avec ou sans chauffeur.' },
+  { id: 'ville', label: 'En ville', short: 'Ville', long: 'Trajet en ville', icon: 'route', text: 'Un trajet simple dans Dakar et sa région, à l’heure qui vous convient.' }
 ];
+
+/* ---------- En-tête de section ---------- */
+export function secHead({ eyebrow = '', title, lead = '', leadShort = '', action = '', id = '', center = false }) {
+  return `<div class="sec-head${center ? ' sec-head--center' : ''}">
+  <div>
+    ${eyebrow ? `<span class="eyebrow">${eyebrow}</span>` : ''}
+    <h2${id ? ` id="${id}"` : ''}>${title}</h2>
+    ${lead ? `<p class="lead">${leadShort ? rs(lead, leadShort) : lead}</p>` : ''}
+  </div>
+  ${action}
+</div>`;
+}
+
+/* ---------- En-tête de page (pages intérieures) ---------- */
+export function pageHead(ctx, { crumbs = '', eyebrow = '', title, lead = '', leadShort = '', plain = false, extra = '' }) {
+  return `<header class="page-head${plain ? ' page-head--plain' : ''}">
+  <div class="container">
+    ${crumbs}
+    ${eyebrow ? `<span class="eyebrow">${eyebrow}</span>` : ''}
+    <h1>${title}</h1>
+    ${lead ? `<p class="lead">${leadShort ? rs(lead, leadShort) : lead}</p>` : ''}
+    ${extra}
+  </div>
+</header>`;
+}
 
 /* ---------- Galerie photo (1 à n images) ---------- */
 export function gallery(ctx, photos, name, { sizes, eager = false, zoom = true, max = 1280 } = {}) {
@@ -33,62 +60,45 @@ export function gallery(ctx, photos, name, { sizes, eager = false, zoom = true, 
 export function vehicleCard(ctx, v, { eager = false, priority = false } = {}) {
   const name = vehicleName(v);
   const href = `${ctx.root}vehicules/${v.slug}.html`;
-  const specs = v.year
-    ? `<ul class="vcard-specs">
-        <li>${icon('calendar')}${v.year}</li>
-        <li>${icon('gauge')}${fmtInt(v.km)}&nbsp;km</li>
-        <li>${icon('fuel')}${v.fuel}</li>
-        <li>${icon('gearbox')}${v.gearbox}</li>
-      </ul>`
-    : `<ul class="vcard-specs"><li>${icon('users')}${v.seats} places</li><li>${icon('camera')}${v.photos.length} photos réelles</li></ul>`;
-  const wa = waLink(ctx.site, `Bonjour FMB, je suis intéressé par le véhicule ${v.ref} : ${v.year ? `${name} ${v.year}` : name} à ${fmtPrice(v.price)} (dédouané, tout compris).`);
+  const full = v.year ? `${name} ${v.year}` : name;
+  const wa = waLink(ctx.site, `Bonjour FMB, je suis intéressé par le véhicule ${v.ref} : ${full} à ${fmtPrice(v.price)} (dédouané, tout compris).`);
+  const meta = v.year
+    ? rs(`${v.year} · ${fmtInt(v.km)}&nbsp;km · ${esc(v.fuel)}`, `${v.year} · ${fmtInt(v.km)}&nbsp;km`)
+    : rs('SUV compact · photos réelles', 'SUV · 5 places');
   return `<article class="vcard" data-vehicle data-href="${href}" data-wa="${esc(wa)}" data-ref="${v.ref}" data-make="${esc(v.make)}" data-type="${esc(v.type)}" data-fuel="${esc(v.fuel || '')}" data-gearbox="${esc(v.gearbox || '')}" data-price="${v.price}" data-year="${v.year || 0}" data-km="${v.km || 0}" data-name="${esc(`${name} ${v.type} ${v.ref}`.toLowerCase())}">
   <div class="vcard-media">
-    ${picture(ctx, v.photos[0].key, name, { sizes: '(min-width: 1081px) 300px, (min-width: 620px) 46vw, (min-width: 641px) 92vw, 46vw', eager, priority, max: 800 })}
-    <div class="vcard-badges"><span class="chip">${esc(v.type)}</span>${v.demo ? '' : `<span class="chip chip--ok">${icon('camera')}Photos réelles</span>`}</div>
-    <span class="vcard-ref">${v.ref}</span>
+    ${picture(ctx, v.photos[0].key, name, { sizes: '(min-width: 1180px) 280px, (min-width: 721px) 30vw, 46vw', eager, priority, max: 800 })}
+    <div class="vcard-badges"><span class="chip chip--glass">${esc(v.type)}</span></div>
   </div>
   <button class="fav-btn" type="button" data-fav="${v.ref}" aria-pressed="false" aria-label="Ajouter ${esc(name)} aux favoris">${icon('heart')}</button>
   <div class="vcard-body">
-    <div>
-      <h3 class="vcard-title"><a href="${href}">${esc(name)}</a></h3>
-      <p class="vcard-sub">${v.year ? rs(`${esc(v.type)} · ${v.year}`, `${v.year} · ${fmtInt(v.km)}&nbsp;km`) : rs('SUV compact · année et kilométrage sur demande', 'SUV · 5 places')}</p>
-    </div>
-    ${specs}
-    <div class="vcard-foot">
-      <div><span class="price-label">Prix tout compris</span><span class="price num">${fmtInt(v.price)} <small>FCFA</small></span></div>
-      <span class="vcard-go" aria-hidden="true">${icon('arrow-right')}</span>
-    </div>
-    <div class="vcard-actions">
-      <a class="btn btn--wa btn--sm" href="${esc(wa)}" target="_blank" rel="noopener">${icon('whatsapp')}Demander</a>
-      <a class="btn btn--outline btn--sm" href="${href}" data-quick>Voir</a>
-    </div>
+    <h3 class="vcard-title"><a href="${href}">${esc(name)}</a></h3>
+    <p class="vcard-meta">${meta}</p>
+    <ul class="vcard-specs" hidden>
+      ${v.year ? `<li>${icon('calendar')}${v.year}</li><li>${icon('gauge')}${fmtInt(v.km)}&nbsp;km</li><li>${icon('fuel')}${esc(v.fuel)}</li><li>${icon('gearbox')}${esc(v.gearbox)}</li>` : `<li>${icon('users')}${v.seats} places</li><li>${icon('camera')}${v.photos.length} photos réelles</li>`}
+    </ul>
+    <div class="vcard-price"><span class="price num">${fmtInt(v.price)} <small>FCFA</small></span><span class="label">Dédouané</span></div>
   </div>
 </article>`;
 }
 
-/* ---------- Carte « flotte avec chauffeur » ---------- */
+/* ---------- Carte « véhicule avec chauffeur » (flotte) ---------- */
 export function fleetCard(ctx, car) {
-  return `<article class="vcard fleet-card">
-  ${gallery(ctx, car.photos, car.name, { sizes: '(min-width: 1000px) 380px, (min-width: 660px) 46vw, (min-width: 641px) 92vw, 30vw', max: 800 })}
-  <div class="vcard-body">
-    <div>
-      <h3 class="vcard-title">${rs(esc(car.name), esc(car.short))}</h3>
-      <p class="vcard-sub">${esc(car.sub)}</p>
-    </div>
-    <div class="fleet-meta">
-      <span class="chip chip--soft">${icon('users')}${car.seats} places</span>
-      <span class="chip chip--ok"><span class="dot"></span>Disponible</span>
-    </div>
-    <div class="vcard-foot">
-      <div><span class="price-label">Tarif</span><span class="price">Sur devis</span></div>
-      <a class="btn btn--cta btn--sm" href="${ctx.root}reservation.html?vehicule=${car.id}" data-reserve-vehicle="${car.id}">Réserver${icon('arrow-right')}</a>
-    </div>
+  return `<article class="fleet">
+  ${gallery(ctx, car.photos, car.name, { sizes: '(min-width: 1180px) 380px, (min-width: 861px) 31vw, (min-width: 721px) 92vw, 34vw', max: 800 })}
+  <div class="fleet-body">
+    <h3>${esc(car.name)}</h3>
+    <p class="fleet-sub">${esc(car.sub)}</p>
+    <ul class="fleet-meta">
+      <li>${icon('users')}${car.seats} places</li>
+      <li>${icon('check-circle')}Climatisée</li>
+    </ul>
+    <a class="btn btn--secondary btn--sm" href="${ctx.root}reservation.html?vehicule=${car.id}" data-reserve-vehicle="${car.id}">${rs('Réserver ce véhicule', 'Réserver')}</a>
   </div>
 </article>`;
 }
 
-/* ---------- Champs de réservation (partagés entre l'accueil et la page Réservation) ---------- */
+/* ---------- Champs de réservation (partagés entre le module et la page Réservation) ---------- */
 const opt = (v, l, sel) => `<option value="${esc(v)}"${sel ? ' selected' : ''}>${esc(l)}</option>`;
 export function bookingFields(p = 'b', { full = false } = {}) {
   // Les champs qui ne concernent pas le service affiché par défaut (« journee ») sont masqués dès le HTML :
@@ -123,10 +133,10 @@ export function bookingWidget(ctx) {
   <div class="booking-body" id="booking-panel" role="tabpanel" aria-labelledby="tab-journee">
     <div class="booking-fields">
       ${bookingFields('w')}
-      <button class="btn btn--cta" type="submit">${icon('search')}Continuer</button>
+      <button class="btn btn--lg" type="submit">Continuer${icon('arrow-right')}</button>
     </div>
-    <p class="booking-hint" data-for="aeroport" hidden><span>Destinations courantes depuis l’AIBD (tarif sur devis) :</span>${['Dakar', 'Saly', 'Mbour', 'Somone', 'Ngaparou', 'Popenguine', 'Thiès', 'Joal'].map((d) => `<span class="chip chip--soft">${d}</span>`).join('')}</p>
-    <p class="booking-hint" data-for="journee duree longue ville">${icon('shield', 'ico-inline')}<span>Aucun paiement en ligne : vous recevez le tarif et la confirmation sur WhatsApp.</span></p>
+    <p class="booking-hint" data-for="aeroport" hidden><span>Destinations courantes depuis l’AIBD :</span>${['Dakar', 'Saly', 'Mbour', 'Somone', 'Thiès'].map((d) => `<span class="chip">${d}</span>`).join('')}</p>
+    <p class="booking-hint" data-for="journee duree longue ville">${icon('shield')}<span>Aucun paiement en ligne : le tarif et la confirmation vous sont envoyés sur WhatsApp.</span></p>
   </div>
 </form>`;
 }
@@ -142,48 +152,24 @@ export const faqLd = (items) => ({ '@context': 'https://schema.org', '@type': 'F
 /* ---------- Avis ---------- */
 export function reviews(list) {
   const star = icon('star');
-  return list.map((r) => `<figure class="review">
+  return `<div class="grid grid--3 reviews">${list.map((r) => `<figure class="review" data-reveal>
   <div class="stars" role="img" aria-label="Note : 5 sur 5">${star.repeat(5)}</div>
   <blockquote>« ${esc(r.text)} »</blockquote>
   <figcaption class="review-author"><span class="avatar" aria-hidden="true">${esc(r.name[0])}</span><span><strong>${esc(r.name)}</strong><span>${esc(r.detail)}${r.demo ? ' · avis d’exemple' : ''}</span></span></figcaption>
-</figure>`).join('\n');
+</figure>`).join('\n')}</div>`;
 }
 
-/* ---------- Bandeau contact ---------- */
-// Sur téléphone, le bandeau générique est masqué (WhatsApp et Appeler sont déjà dans la barre du bas, les coordonnées
-// dans le pied de page). `mobile: true` le garde, réduit à son titre, son texte court et un bouton (ex. : courtage).
-export function ctaBand(ctx, { title = 'Une question ? Parlons de votre trajet.', text = 'Écrivez-nous sur WhatsApp ou appelez-nous : nous vous répondons directement et établissons votre devis.', textShort = '', mobile = false, wa = '' } = {}) {
-  const { site } = ctx;
-  return `<section class="section cta-section${mobile ? '' : ' lg'}" aria-labelledby="cta-title">
+/* ---------- Appel à l'action final (un seul par page) ---------- */
+export function cta(ctx, { title, text, primary, secondary = '' }) {
+  return `<section class="section" aria-labelledby="cta-title">
   <div class="container">
-    <div class="cta-band" data-reveal>
-      <div class="stack">
-        <h2 id="cta-title">${title}</h2>
-        <p>${textShort ? rs(text, textShort) : text}</p>
-        <div class="cluster">
-          <a class="btn btn--cta" href="${wa || waLink(site)}" target="_blank" rel="noopener">${icon('whatsapp')}${mobile ? rs('Écrire sur WhatsApp', 'Parler à un conseiller') : 'Écrire sur WhatsApp'}</a>
-          <a class="btn btn--ghost-light lg" href="tel:${site.phoneE164}">${icon('phone')}Appeler</a>
-        </div>
-      </div>
-      <ul class="contact-list lg">
-        <li>${icon('phone')}<div><span>Téléphone et WhatsApp</span><a href="tel:${site.phoneE164}">${site.phoneDisplay}</a></div></li>
-        <li>${icon('mail')}<div><span>E-mail</span><a href="mailto:${site.email}">${site.email}</a></div></li>
-        <li>${icon('pin')}<div><span>Adresse</span><strong>${esc(site.address.locality)}, ${esc(site.address.street)}</strong></div></li>
-      </ul>
+    <div class="cta" data-reveal>
+      <div><h2 id="cta-title">${title}</h2><p>${text}</p></div>
+      <div class="actions">${primary}${secondary}</div>
     </div>
   </div>
 </section>`;
 }
+export const waButton = (ctx, label = 'Écrire sur WhatsApp', text = '') => `<a class="btn btn--wa" href="${waLink(ctx.site, text)}" target="_blank" rel="noopener">${icon('whatsapp')}${label}</a>`;
 
-export function pageHero(ctx, { eyebrow, title, lead, leadShort = '', crumbs, extra = '', compact = false }) {
-  return `<section class="page-hero${compact ? ' page-hero--compact' : ''}">
-  <div class="container">
-    ${crumbs}
-    ${eyebrow ? `<span class="eyebrow">${eyebrow}</span>` : ''}
-    <h1>${title}</h1>
-    ${lead ? `<p class="lead">${leadShort ? rs(lead, leadShort) : lead}</p>` : ''}
-    ${extra}
-  </div>
-</section>`;
-}
 export { fmtPrice };

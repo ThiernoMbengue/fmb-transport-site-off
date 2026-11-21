@@ -83,11 +83,11 @@ FMB.register('sheet', function () {
     frag.appendChild(media);
     var head = el('div');
     var h = el('h2', '', name); h.id = 'sheet-title'; head.appendChild(h);
-    var sub = $('.vcard-sub .lg', card) || $('.vcard-sub', card);
-    head.appendChild(el('p', 'vcard-sub', sub.textContent.trim()));
+    var sub = $('.vcard-meta .lg', card) || $('.vcard-meta', card);
+    head.appendChild(el('p', 'vcard-meta', sub.textContent.trim()));
     frag.appendChild(head);
     var specs = $('.vcard-specs', card);
-    if (specs) frag.appendChild(specs.cloneNode(true));
+    if (specs) { var list = specs.cloneNode(true); list.hidden = false; frag.appendChild(list); }
     var price = el('div', 'sheet-price');
     price.appendChild($('.price', card).cloneNode(true));
     price.appendChild(el('span', '', 'Dédouané · tout compris'));
@@ -95,7 +95,7 @@ FMB.register('sheet', function () {
     var actions = el('div', 'sheet-actions');
     var wa = el('a', 'btn btn--wa'); wa.href = card.dataset.wa; wa.target = '_blank'; wa.rel = 'noopener';
     wa.innerHTML = '<svg class="i" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>'; wa.appendChild(document.createTextNode('Demander'));
-    var more = el('a', 'btn btn--outline', 'Fiche complète'); more.href = card.dataset.href;
+    var more = el('a', 'btn btn--secondary', 'Fiche complète'); more.href = card.dataset.href;
     actions.appendChild(wa); actions.appendChild(more);
     frag.appendChild(actions);
     open(frag, 'sheet-title');

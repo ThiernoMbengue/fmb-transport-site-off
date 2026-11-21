@@ -1,13 +1,13 @@
 // Pages légales. ⚠ Modèles à relire et faire valider (juriste) avant mise en ligne définitive.
 import { esc } from '../components/util.mjs';
-import { pageHero } from '../components/sections.mjs';
+import { pageHead } from '../components/sections.mjs';
 import { breadcrumb } from '../components/layout.mjs';
 
 const todo = (v, what) => v ? esc(v) : `<span class="todo">à compléter : ${what}</span>`;
 const page = (ctx, { path, label, title, description, lead, html }) => ({
   id: 'legal', path, nav: '', title: `${title} — FMB Transport`, description,
-  body: `${pageHero(ctx, { crumbs: breadcrumb(ctx, [{ label }]), title, lead, compact: true })}
-<section class="section section--tight"><div class="container"><div class="prose">${html}</div></div></section>`
+  body: `${pageHead(ctx, { crumbs: breadcrumb(ctx, [{ label }]), title, lead })}
+<section class="section"><div class="container container--narrow"><div class="prose">${html}</div></div></section>`
 });
 
 export function mentions(ctx) {

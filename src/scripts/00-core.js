@@ -7,7 +7,7 @@ var FMB = (function () {
   'use strict';
   var html = document.documentElement;
   // Téléphone : même seuil que la feuille de style 05-mobile.css
-  var mobile = window.matchMedia('(max-width: 640px)');
+  var mobile = window.matchMedia('(max-width: 720px)');
   var cfg = { wa: html.dataset.wa, email: html.dataset.email, phone: html.dataset.phone, root: html.dataset.root || '' };
   var $ = function (sel, el) { return (el || document).querySelector(sel); };
   var $$ = function (sel, el) { return Array.prototype.slice.call((el || document).querySelectorAll(sel)); };

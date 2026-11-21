@@ -11,6 +11,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { layout } from './src/components/layout.mjs';
 import home from './src/pages/home.mjs';
+import chauffeur from './src/pages/chauffeur.mjs';
 import reservation from './src/pages/reservation.mjs';
 import { catalogue, vehiclePage } from './src/pages/vehicles.mjs';
 import services from './src/pages/services.mjs';
@@ -54,7 +55,7 @@ write(`assets/js/${assets.js}`, js);
 
 // 4. Pages
 const ctxFor = (path) => ({ site, siteUrl, data, images, assets, root: '../'.repeat(path.split('/').length - 1) });
-const builders = [home, reservation, catalogue, services, invest, contact, mentions, privacy, terms, ...data.vehicles.map((v) => (ctx) => vehiclePage(ctx, v))];
+const builders = [home, chauffeur, reservation, catalogue, services, invest, contact, mentions, privacy, terms, ...data.vehicles.map((v) => (ctx) => vehiclePage(ctx, v))];
 const pages = [];
 for (const build of builders) {
   const probe = build(ctxFor('x.html'));                 // 1er passage : connaître le chemin de la page

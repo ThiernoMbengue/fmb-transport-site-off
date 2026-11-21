@@ -1,7 +1,7 @@
 var FMB = (function () {
 'use strict';
 var html = document.documentElement;
-var mobile = window.matchMedia('(max-width: 640px)');
+var mobile = window.matchMedia('(max-width: 720px)');
 var cfg = { wa: html.dataset.wa, email: html.dataset.email, phone: html.dataset.phone, root: html.dataset.root || '' };
 var $ = function (sel, el) { return (el || document).querySelector(sel); };
 var $$ = function (sel, el) { return Array.prototype.slice.call((el || document).querySelectorAll(sel)); };
@@ -68,7 +68,7 @@ $('.sr-only', toggle).textContent = open ? 'Fermer le menu' : 'Ouvrir le menu';
 toggle.addEventListener('click', function () { setOpen(!nav.classList.contains('is-open')); });
 document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && nav.classList.contains('is-open')) { setOpen(false); toggle.focus(); } });
 nav.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
-window.matchMedia('(min-width: 1081px)').addEventListener('change', function () { setOpen(false); });
+window.matchMedia('(min-width: 901px)').addEventListener('change', function () { setOpen(false); });
 }
 var demo = $('[data-demo-bar]');
 if (demo) {
@@ -174,7 +174,7 @@ if (prev) prev.addEventListener('click', function () { show(idx - 1); });
 if (next) next.addEventListener('click', function () { show(idx + 1); });
 g.addEventListener('keydown', function (e) { if (e.key === 'ArrowLeft') show(idx - 1); if (e.key === 'ArrowRight') show(idx + 1); });
 var x0 = null, stage = $('.gallery-stage', g);
-var inRow = function () { return FMB.mobile.matches && g.closest('.fleet-card'); };
+var inRow = function () { return FMB.mobile.matches && g.closest('.fleet'); };
 stage.addEventListener('touchstart', function (e) { x0 = inRow() ? null : e.touches[0].clientX; }, { passive: true });
 stage.addEventListener('touchend', function (e) { if (x0 === null) return; var dx = e.changedTouches[0].clientX - x0; x0 = null; if (dx < -40) show(idx + 1); else if (dx > 40) show(idx - 1); });
 if (zoom) zoom.addEventListener('click', function () { openLightbox(zoom.dataset.full || main.currentSrc || main.src, main.alt); });
@@ -252,11 +252,11 @@ media.appendChild(copy);
 frag.appendChild(media);
 var head = el('div');
 var h = el('h2', '', name); h.id = 'sheet-title'; head.appendChild(h);
-var sub = $('.vcard-sub .lg', card) || $('.vcard-sub', card);
-head.appendChild(el('p', 'vcard-sub', sub.textContent.trim()));
+var sub = $('.vcard-meta .lg', card) || $('.vcard-meta', card);
+head.appendChild(el('p', 'vcard-meta', sub.textContent.trim()));
 frag.appendChild(head);
 var specs = $('.vcard-specs', card);
-if (specs) frag.appendChild(specs.cloneNode(true));
+if (specs) { var list = specs.cloneNode(true); list.hidden = false; frag.appendChild(list); }
 var price = el('div', 'sheet-price');
 price.appendChild($('.price', card).cloneNode(true));
 price.appendChild(el('span', '', 'Dédouané · tout compris'));
@@ -264,7 +264,7 @@ frag.appendChild(price);
 var actions = el('div', 'sheet-actions');
 var wa = el('a', 'btn btn--wa'); wa.href = card.dataset.wa; wa.target = '_blank'; wa.rel = 'noopener';
 wa.innerHTML = '<svg class="i" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>'; wa.appendChild(document.createTextNode('Demander'));
-var more = el('a', 'btn btn--outline', 'Fiche complète'); more.href = card.dataset.href;
+var more = el('a', 'btn btn--secondary', 'Fiche complète'); more.href = card.dataset.href;
 actions.appendChild(wa); actions.appendChild(more);
 frag.appendChild(actions);
 open(frag, 'sheet-title');
@@ -462,14 +462,14 @@ $$('[data-filters-reset]', root).forEach(function (b) { b.addEventListener('clic
 $('[data-more-btn]', root).addEventListener('click', function () { shown += PAGE; apply(true); });
 document.addEventListener('fmb:favoris', function () { if (form.elements.favoris.checked) apply(true); });
 var opener = $('[data-filters-open]', root);
-var backdrop = null;
+var backdrop = null, sheetMode = window.matchMedia('(max-width: 960px)');   // filtres en panneau sous 960 px
 function drawer(open) {
 form.classList.toggle('is-open', open); document.body.classList.toggle('nav-open', open);
-if (open && FMB.mobile.matches && !backdrop) { backdrop = document.createElement('div'); backdrop.className = 'sheet-backdrop'; backdrop.addEventListener('click', function () { drawer(false); }); document.body.appendChild(backdrop); }
+if (open && sheetMode.matches && !backdrop) { backdrop = document.createElement('div'); backdrop.className = 'sheet-backdrop'; backdrop.addEventListener('click', function () { drawer(false); }); document.body.appendChild(backdrop); }
 if (!open && backdrop) { backdrop.parentNode.removeChild(backdrop); backdrop = null; }
 if (!open && opener) { opener.focus({ preventScroll: true }); countEl.scrollIntoView({ block: 'start' }); }
 }
-if (opener) opener.addEventListener('click', function () { drawer(true); if (!FMB.mobile.matches) $('input', form).focus(); else $('[data-filters-close]', form).focus({ preventScroll: true }); });
+if (opener) opener.addEventListener('click', function () { drawer(true); if (!sheetMode.matches) $('input', form).focus(); else $('[data-filters-close]', form).focus({ preventScroll: true }); });
 $$('[data-filters-close]', root).forEach(function (b) { b.addEventListener('click', function () { drawer(false); }); });
 document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && form.classList.contains('is-open')) drawer(false); });
 apply();

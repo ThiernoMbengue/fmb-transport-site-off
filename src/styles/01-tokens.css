@@ -1,112 +1,126 @@
 /* ==========================================================================
-   01 · JETONS DE DESIGN — source unique des couleurs, polices, espacements.
-   Modifier une valeur ici la change sur tout le site.
+   01 · JETONS DE DESIGN — source unique des couleurs, typographies, tailles,
+   espacements, rayons et ombres. Toutes les autres feuilles n'utilisent que
+   ces variables : changer une valeur ici la change partout, dans les deux thèmes.
+
+   Direction artistique : base sobre (blanc, gris chaud, bleu nuit profond),
+   un seul accent (le bleu du logo FMB), une seule police, beaucoup d'air.
    ========================================================================== */
-/* Polices variables auto-hébergées, réduites aux graisses réellement utilisées (texte 400–800, titres 700–800). */
-/* Polices variables auto-hébergées, réduites aux graisses réellement utilisées (texte 400–800, titres 700–800). */
 @font-face {
   font-family: "Manrope";
   src: url("../fonts/manrope-latin-wght-normal.woff2") format("woff2");
   font-weight: 400 800; font-style: normal; font-display: swap;
 }
-@font-face {
-  font-family: "Bricolage Grotesque";
-  src: url("../fonts/bricolage-grotesque-latin-wght-normal.woff2") format("woff2");
-  font-weight: 700 800; font-style: normal; font-display: swap;
-}
-/* Polices de secours calées sur les métriques des polices du site : pendant le chargement, le texte occupe
-   exactement la même place → aucun saut de mise en page (CLS) quand la vraie police arrive. */
+/* Police de secours calée sur Manrope : aucun saut de mise en page au chargement */
 @font-face { font-family: "Manrope Fallback"; src: local("Arial"), local("Helvetica Neue"), local("Liberation Sans"); size-adjust: 102.3%; ascent-override: 104.2%; descent-override: 29.3%; line-gap-override: 0%; }
-@font-face { font-family: "Bricolage Fallback"; src: local("Arial Bold"), local("Arial"), local("Liberation Sans Bold"); font-weight: 700; size-adjust: 101.7%; ascent-override: 91.4%; descent-override: 26.5%; line-gap-override: 0%; }
+
 :root {
   color-scheme: light;
-  /* Couleurs de marque (issues du logo FMB) */
-  --navy-950: #051526;
-  --navy-900: #071d33;
-  --navy-800: #0b2a4a;
-  --navy-700: #123a63;
-  --blue-600: #1b6394;
-  --blue-500: #2a7db3;
-  --blue-400: #4496c0;
-  --blue-100: #dcebf6;
-  --blue-50: #f2f7fb;
-  --amber-500: #ffae1a;
-  --amber-400: #ffc04d;
-  --amber-100: #fff3d9;
-  /* Neutres */
-  --ink: #0e2238;
-  --text: #33495f;
-  --muted: #536a80;          /* 5,4:1 sur fond clair (AA) */
-  --placeholder: #63798e;
-  --line: #dbe5ee;
-  --line-strong: #bccddc;
-  --surface: #ffffff;
-  --bg: #f6f9fc;
-  /* Rôles de couleur : tout le site passe par ces variables (le mode sombre ne redéfinit que celles-ci) */
-  --brand-ink: var(--navy-800);      /* texte de marque sur fond clair (titres de prix, liens forts) */
-  --fill-strong: var(--navy-800);    /* petits aplats de marque avec texte blanc (pastilles, boutons pleins) */
-  --media-bg: #e6edf3;               /* fond des photos pendant le chargement */
-  --header-bg: rgba(255, 255, 255, .88);
-  --bar-bg: rgba(255, 255, 255, .94);
-  --glass: rgba(255, 255, 255, .94);  /* boutons posés sur les photos (identiques dans les deux thèmes) */
-  --glass-solid: #fff;
-  --on-glass: var(--navy-900);
-  --amber-line: #f5dfae;
-  --amber-ink: #6b4700;
-  --amber-ink-strong: #5c3d00;
-  --amber-hover: rgba(92, 61, 0, .1);
-  --ok-line: #bfe6d4;
-  --err-line: #f4c5c0;
-  --err-ink: #8f241c;
-  --err-surface: #fffafa;
-  --fav: #d8324a;
-  /* Textes posés sur les fonds bleu nuit (héros, bandeaux, pied de page) : identiques dans les deux thèmes */
-  --on-navy: #fff;
-  --on-navy-1: #dbe8f3;
-  --on-navy-1b: #e3edf6;
-  --on-navy-2: #c5d6e6;
-  --on-navy-3: #b9cde0;
-  --on-navy-4: #9db8d0;
-  --on-navy-5: #8fa9c1;
-  --on-navy-footer: #9db3c8;
-  --eyebrow-on-navy: #8ec3e6;
-  --chart-grid: #dbe5ee;
-  --chart-label: #5c7389;
-  --select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='none' stroke='%230b2a4a' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 8 5 5 5-5'/%3E%3C/svg%3E");
-  /* États */
-  --ok: #0b6b4b;             /* 5,6:1 sur --ok-bg (AA) */
-  --ok-bg: #e4f6ee;
-  --err: #c0362c;
-  --err-bg: #fdecea;
-  --wa: #0f7a41;             /* vert WhatsApp assombri : 5,3:1 avec du texte blanc (AA) */
-  --wa-dark: #0b6234;
-  --wa-text: var(--wa);       /* WhatsApp en couleur de texte (plus clair en mode sombre) */
-  /* Typographie */
-  --font-display: "Bricolage Grotesque", "Bricolage Fallback", system-ui, sans-serif;
-  --font-text: "Manrope", "Manrope Fallback", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --fs-xs: 0.8125rem;
-  --fs-sm: 0.9375rem;
-  --fs-md: 1rem;
-  --fs-lg: 1.125rem;
-  --fs-xl: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
-  --fs-2xl: clamp(1.6rem, 1.25rem + 1.6vw, 2.5rem);
-  --fs-3xl: clamp(2.125rem, 1.25rem + 3.1vw, 3.75rem);
-  /* Espacements et formes */
-  --gutter: clamp(16px, 4vw, 32px);
-  --container: 1240px;
-  --section: clamp(56px, 8vw, 112px);
-  --r-sm: 8px;
-  --r-md: 12px;
-  --r-lg: 18px;
+
+  /* --- Couleurs --- */
+  --bg: #ffffff;              /* fond de page */
+  --bg-soft: #f5f5f2;         /* sections alternées (gris chaud) */
+  --surface: #ffffff;         /* cartes, champs */
+  --surface-2: #f8f8f6;       /* zones secondaires dans une carte */
+  --ink: #0d1b2a;             /* titres */
+  --text: #3a4756;            /* texte courant */
+  --muted: #5f6b78;           /* texte secondaire (4,9:1 sur blanc) */
+  --placeholder: #7a8591;
+  --line: #e6e6e1;            /* bordures discrètes */
+  --line-strong: #cfd2d2;
+  --brand: #0b2a4a;           /* bleu nuit du logo : boutons principaux */
+  --brand-hover: #123d69;
+  --on-brand: #ffffff;
+  --accent: #1d6fae;          /* bleu du logo : liens, accents */
+  --accent-soft: #eaf2f9;
+  --accent-ink: #165a8f;      /* accent en texte (5,9:1 sur blanc) */
+  --star: #e8a317;
+  --dark: #0a1726;            /* sections sombres et pied de page */
+  --dark-2: #112236;
+  --on-dark: #ffffff;
+  --on-dark-muted: #aebbc8;
+  --on-dark-line: rgba(255, 255, 255, .12);
+  --wa: #0f7a41;              /* WhatsApp, texte blanc 5,3:1 */
+  --wa-hover: #0b6234;
+  --ok: #0b6b4b;
+  --ok-soft: #e5f4ec;
+  --err: #b42318;
+  --err-soft: #fdeceb;
+  --media-bg: #ecece8;        /* fond des photos pendant le chargement */
+  --overlay: rgba(6, 14, 24, .55);
+  --header-bg: rgba(255, 255, 255, .9);
+  --select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='none' stroke='%230d1b2a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 8 4 4 4-4'/%3E%3C/svg%3E");
+
+  /* --- Typographie (une seule famille) --- */
+  --font: "Manrope", "Manrope Fallback", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --fs-xs: .75rem;      /* 12 px : libellés, mentions */
+  --fs-sm: .875rem;     /* 14 px : texte secondaire */
+  --fs-md: 1rem;        /* 16 px : texte courant (15 px sur téléphone) */
+  --fs-lg: 1.0625rem;   /* 17 px : introductions */
+  --fs-h3: 1.125rem;    /* 18 px */
+  --fs-h2: clamp(1.5rem, 1.15rem + 1.3vw, 2.25rem);    /* 24 → 36 px */
+  --fs-h1: clamp(1.875rem, 1.3rem + 2.3vw, 3.25rem);   /* 30 → 52 px */
+
+  /* --- Espacements et mise en page --- */
+  --container: 1200px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --section: clamp(56px, 7vw, 104px);
+  --header-h: 68px;
+  --tabbar-h: 0px;
+  --tap: 44px;
+
+  /* --- Formes --- */
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 20px;
   --r-xl: 28px;
-  --shadow-sm: 0 1px 2px rgba(7, 29, 51, 0.06), 0 1px 3px rgba(7, 29, 51, 0.05);
-  --shadow-md: 0 6px 18px -6px rgba(7, 29, 51, 0.16), 0 2px 6px rgba(7, 29, 51, 0.05);
-  --shadow-lg: 0 28px 60px -24px rgba(7, 29, 51, 0.35), 0 8px 20px -10px rgba(7, 29, 51, 0.12);
-  --ring: 0 0 0 3px rgba(255, 174, 26, 0.55);
-  --ease: cubic-bezier(0.22, 0.8, 0.26, 1);
-  --header-h: 72px;
-  --tap: 44px;               /* taille minimale d'une cible tactile */
+  --pill: 999px;
+  --shadow-sm: 0 1px 2px rgba(13, 27, 42, .05);
+  --shadow-md: 0 8px 24px -12px rgba(13, 27, 42, .18), 0 2px 6px -2px rgba(13, 27, 42, .06);
+  --shadow-lg: 0 30px 60px -30px rgba(13, 27, 42, .35);
+  --ring: 0 0 0 3px rgba(29, 111, 174, .35);
+
+  /* --- Mouvement --- */
+  --ease: cubic-bezier(.2, .8, .2, 1);
+  --dur: .22s;
 }
 
-/* Très grands écrans : conteneur un peu plus large, puis mise à l'échelle globale (2K / 4K). */
-@media (min-width: 1600px) { :root { --container: 1320px; } }
+/* Téléphone : texte de base à 15 px, en-tête plus fin, barre d'onglets */
+@media (max-width: 720px) {
+  :root { --header-h: 56px; --tabbar-h: 62px; --section: 52px; }
+}
+
+/* --- Thème sombre (réglage du système) : seules les variables changent --- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --bg: #0b131c;
+    --bg-soft: #0f1924;
+    --surface: #131f2c;
+    --surface-2: #182636;
+    --ink: #eef2f6;
+    --text: #c5cfd9;
+    --muted: #97a5b3;
+    --placeholder: #7f8d9b;
+    --line: #22313f;
+    --line-strong: #344657;
+    --brand: #e9eef4;          /* boutons principaux clairs sur fond sombre */
+    --brand-hover: #ffffff;
+    --on-brand: #0b131c;
+    --accent: #5ea8dd;
+    --accent-soft: #172b3e;
+    --accent-ink: #8cc3ea;
+    --dark: #070e16;
+    --dark-2: #0e1a27;
+    --ok: #5fd0a0;
+    --ok-soft: #12302a;
+    --err: #ff8a7f;
+    --err-soft: #3a1714;
+    --media-bg: #1a2735;
+    --header-bg: rgba(11, 19, 28, .88);
+    --select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='none' stroke='%23c5cfd9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 8 4 4 4-4'/%3E%3C/svg%3E");
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, .3);
+    --shadow-md: 0 10px 28px -14px rgba(0, 0, 0, .6);
+    --shadow-lg: 0 30px 60px -30px rgba(0, 0, 0, .8);
+  }
+}

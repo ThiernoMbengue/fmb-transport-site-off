@@ -7,9 +7,8 @@
 <meta name="description" content="Participez au financement de véhicules exploités par FMB et suivez recettes, dépenses et versements dans un tableau de bord investisseur.">
 
 
-<meta name="theme-color" content="#ffffff" media="(max-width: 640px) and (prefers-color-scheme: light)">
-<meta name="theme-color" content="#111c29" media="(max-width: 640px) and (prefers-color-scheme: dark)">
-<meta name="theme-color" content="#0B2A4A">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b131c" media="(prefers-color-scheme: dark)">
 <meta name="color-scheme" content="light dark">
 <meta name="format-detection" content="telephone=no">
 <meta property="og:type" content="website">
@@ -25,115 +24,116 @@
 <link rel="apple-touch-icon" href="assets/img/icon-180.png">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="preload" href="assets/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/app.65e17895f3.css">
-<script src="assets/js/app.5785c5db58.js" defer></script>
+<link rel="stylesheet" href="assets/css/app.fc6eb1c689.css">
+<script src="assets/js/app.1c2d7c46ba.js" defer></script>
 <script type="speculationrules">{"prerender":[{"where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":"/*\\?*"}},{"not":{"selector_matches":"[target=_blank]"}}]},"eagerness":"moderate"}],"prefetch":[{"where":{"href_matches":"/*"},"eagerness":"moderate"}]}</script>
 
 </head>
 <body data-page="invest">
-<svg class="sprite" aria-hidden="true" focusable="false"><symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></symbol><symbol id="i-car" viewBox="0 0 24 24"><path d="M4 16v-3.5l2-5A2 2 0 0 1 7.9 6h8.2a2 2 0 0 1 1.9 1.5l2 5V16"/><path d="M3 16h18v2.5H3z"/><circle cx="7.5" cy="14" r=".6"/><circle cx="16.5" cy="14" r=".6"/><path d="M5.5 18.5V20M18.5 18.5V20M5 11.5h14"/></symbol><symbol id="i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></symbol><symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5s-8-4.8-8-10.7A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8 2.8c0 5.9-8 10.7-8 10.7z"/></symbol><symbol id="i-home" viewBox="0 0 24 24"><path d="m3.5 11 8.5-7 8.5 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5.5h4V20"/></symbol><symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7.5 8.5 6 8.5-6"/></symbol><symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol><symbol id="i-phone" viewBox="0 0 24 24"><path d="M21 16.5v2.6a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 1.1 3.3 2 2 0 0 1 3.1 1.1h2.6a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L6.8 8.8a16 16 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" transform="translate(.9 .9) scale(.92)"/></symbol><symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol><symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M3.5 20.5 4.8 16A8.5 8.5 0 1 1 8 19.2z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.5-2-1-1 .8c-1-.4-2.3-1.7-2.8-2.8l.8-1-1-2z"/></symbol><symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol></svg>
+<svg class="sprite" aria-hidden="true" focusable="false"><symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></symbol><symbol id="i-car" viewBox="0 0 24 24"><path d="M4 16v-3.5l2-5A2 2 0 0 1 7.9 6h8.2a2 2 0 0 1 1.9 1.5l2 5V16"/><path d="M3 16h18v2.5H3z"/><circle cx="7.5" cy="14" r=".6"/><circle cx="16.5" cy="14" r=".6"/><path d="M5.5 18.5V20M18.5 18.5V20M5 11.5h14"/></symbol><symbol id="i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></symbol><symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5s-8-4.8-8-10.7A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8 2.8c0 5.9-8 10.7-8 10.7z"/></symbol><symbol id="i-home" viewBox="0 0 24 24"><path d="m3.5 11 8.5-7 8.5 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5.5h4V20"/></symbol><symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol><symbol id="i-message" viewBox="0 0 24 24"><path d="M20 12.5a7.5 7.5 0 0 1-11.1 6.6L4 20.5l1.4-4.6A7.5 7.5 0 1 1 20 12.5z"/></symbol><symbol id="i-phone" viewBox="0 0 24 24"><path d="M21 16.5v2.6a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 1.1 3.3 2 2 0 0 1 3.1 1.1h2.6a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L6.8 8.8a16 16 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" transform="translate(.9 .9) scale(.92)"/></symbol><symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.2 3.6-7 8-7s8 2.8 8 7"/></symbol><symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M3.5 20.5 4.8 16A8.5 8.5 0 1 1 8 19.2z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.5-2-1-1 .8c-1-.4-2.3-1.7-2.8-2.8l.8-1-1-2z"/></symbol><symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol></svg>
 
 <a class="skip-link" href="#contenu">Aller au contenu</a>
-<aside class="demo-bar" data-demo-bar aria-label="Information sur cette version"><div class="container"><p><strong>Version de démonstration</strong><span class="demo-long"> — les annonces de vente, leurs prix et les avis clients sont des exemples.</span><span class="demo-short"> · annonces et avis d’exemple</span></p><button type="button" data-demo-close aria-label="Masquer ce message"><svg class="i i-x" aria-hidden="true" focusable="false"><use href="#i-x"/></svg></button></div></aside>
 <header class="site-header" data-header>
   <div class="container">
     <a class="brand" href="index.html">
-      <img src="assets/img/logo-96.webp" srcset="assets/img/logo-96.webp 1x, assets/img/logo-192.webp 2x" width="46" height="46" alt="" decoding="async">
-      <span><span class="brand-name">FMB Transport</span><span class="brand-sub">Trans-Mobilité Services</span><span class="sr-only"> — accueil</span></span>
+      <img src="assets/img/logo-96.webp" srcset="assets/img/logo-96.webp 1x, assets/img/logo-192.webp 2x" width="38" height="38" alt="" decoding="async">
+      <span class="brand-name">FMB Transport<span class="sr-only"> — accueil</span></span>
     </a>
     <nav class="main-nav" id="menu" aria-label="Navigation principale" data-nav>
       <ul>
-        <li><a href="index.html">Réserver</a></li>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="chauffeur.html">Chauffeur privé</a></li>
         <li><a href="vehicules.html">Véhicules à vendre</a></li>
         <li><a href="services.html">Services</a></li>
         <li><a href="investir.html" aria-current="page">Investir</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
       <div class="nav-extra">
-        <a class="btn btn--cta btn--block" href="reservation.html">Réserver un chauffeur</a>
-        <a class="btn btn--outline btn--block" href="vehicules.html?favoris=1"><svg class="i i-heart" aria-hidden="true" focusable="false"><use href="#i-heart"/></svg>Mes favoris</a>
-        <a class="btn btn--outline btn--block" href="tel:+221776893369"><svg class="i i-phone" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>+221 77 689 33 69</a>
+        <a class="btn btn--block" href="reservation.html">Réserver un chauffeur</a>
+        <a class="btn btn--secondary btn--block" href="tel:+221776893369"><svg class="i i-phone" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>+221 77 689 33 69</a>
       </div>
     </nav>
     <div class="header-actions">
       <a class="header-phone" href="tel:+221776893369" aria-label="Appeler le +221 77 689 33 69"><svg class="i i-phone" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg><span>+221 77 689 33 69</span></a>
-      <a class="icon-btn header-fav" href="vehicules.html?favoris=1" aria-label="Mes véhicules favoris"><svg class="i i-heart" aria-hidden="true" focusable="false"><use href="#i-heart"/></svg><span class="badge-count" data-fav-count hidden>0</span></a>
-      <a class="btn btn--cta btn--sm" href="reservation.html">Réserver</a>
-      <button class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="menu" data-nav-toggle><span class="sr-only">Ouvrir le menu</span><svg class="i i-menu" aria-hidden="true" focusable="false"><use href="#i-menu"/></svg></button>
+      <a class="icon-btn icon-btn--plain header-fav" href="vehicules.html?favoris=1" aria-label="Mes véhicules favoris"><svg class="i i-heart" aria-hidden="true" focusable="false"><use href="#i-heart"/></svg><span class="badge-count" data-fav-count hidden>0</span></a>
+      <a class="btn btn--sm" href="reservation.html">Réserver</a>
+      <button class="icon-btn icon-btn--plain nav-toggle" type="button" aria-expanded="false" aria-controls="menu" data-nav-toggle><span class="sr-only">Ouvrir le menu</span><svg class="i i-menu" aria-hidden="true" focusable="false"><use href="#i-menu"/></svg></button>
     </div>
   </div>
 </header>
 <main id="contenu">
 
-<section class="page-hero">
-  <div class="container split">
-    <div class="stack">
-      <nav class="breadcrumb" aria-label="Fil d’Ariane"><ol>
+<header class="page-head">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Fil d’Ariane"><ol>
     <li><a href="index.html">Accueil</a></li>
     <li><span aria-current="page">Investir</span></li>
   </ol></nav>
-      <span class="eyebrow">Investissement participatif</span>
-      <h1>Investissez dans le transport, ensemble</h1>
-      <p class="lead"><span class="lg">Participez au financement de véhicules exploités par FMB et suivez leur activité en toute transparence, depuis votre tableau de bord investisseur.</span><span class="sm">Financez des véhicules FMB, suivez leurs résultats en direct.</span></p>
-      <ul class="tick-list tick-list--light lg">
-        <li><svg class="i i-check-circle" aria-hidden="true" focusable="false"><use href="#i-check-circle"/></svg>Participez au financement de véhicules exploités par FMB</li>
-        <li><svg class="i i-check-circle" aria-hidden="true" focusable="false"><use href="#i-check-circle"/></svg>Suivez les recettes, les dépenses et les versements de chaque véhicule</li>
-        <li><svg class="i i-check-circle" aria-hidden="true" focusable="false"><use href="#i-check-circle"/></svg>Consultez les données réelles dans votre tableau de bord</li>
+    <span class="eyebrow">Investissement participatif</span>
+    <h1>Investissez dans le transport, en toute transparence</h1>
+    <p class="lead"><span class="lg">Participez au financement de véhicules exploités par FMB et suivez recettes, dépenses et versements dans votre tableau de bord.</span><span class="sm">Financez des véhicules FMB, suivez leurs résultats.</span></p>
+    
+  </div>
+</header>
+
+<section class="section">
+  <div class="container split invest">
+    <div class="invest-copy">
+      <h2>Ce que vous suivez, véhicule par véhicule</h2>
+      <ul class="checklist">
+        <li><svg class="i i-check-circle" aria-hidden="true" focusable="false"><use href="#i-check-circle"/></svg><span>Les recettes et les dépenses de chaque jour d’activité</span></li>
+        <li><svg class="i i-check-circle" aria-hidden="true" focusable="false"><use href="#i-check-circle"/></svg><span>Le montant net versé, sans approximation</span></li>
+        <li><svg class="i i-check-circle" aria-hidden="true" focusable="false"><use href="#i-check-circle"/></svg><span>Les données réelles, mises à jour par notre équipe</span></li>
       </ul>
-      <div><a class="btn btn--cta" href="https://wa.me/221776893369?text=Bonjour%20FMB%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20l%E2%80%99investissement%20participatif%20et%20l%E2%80%99acc%C3%A8s%20au%20tableau%20de%20bord." target="_blank" rel="noopener"><span class="lg">Demander l’accès au tableau de bord</span><span class="sm">Demander l’accès</span><svg class="i i-arrow-right" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a></div>
+      <div><a class="btn" href="https://wa.me/221776893369?text=Bonjour%20FMB%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20l%E2%80%99investissement%20participatif%20et%20l%E2%80%99acc%C3%A8s%20au%20tableau%20de%20bord." target="_blank" rel="noopener"><span class="lg">Demander l’accès au tableau de bord</span><span class="sm">Demander l’accès</span><svg class="i i-arrow-right" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a></div>
       <p class="disclaimer">Les modalités de participation sont communiquées sur demande. Tout investissement comporte un risque, y compris de perte en capital.</p>
     </div>
-    <div class="stack">
-      <div class="dash">
-        <div class="dash-head"><div><strong>Tableau de bord investisseur</strong><span>Un véhicule exploité par FMB · septembre 2026</span></div><span class="chip chip--amber">Aperçu</span></div>
-        <div class="kpis">
-          <div class="kpi"><span>Recette</span><strong class="num">772 505</strong><small>FCFA</small></div>
-          <div class="kpi"><span>Dépenses</span><strong class="num">281 759</strong><small>FCFA</small></div>
-          <div class="kpi kpi--accent"><span>Net versé</span><strong class="num">490 746</strong><small>FCFA</small></div>
-          <div class="kpi"><span>Activité</span><strong class="num">22</strong><small>jours</small></div>
-        </div>
-        <div class="dash-chart">
-          <div class="dash-chart-head"><strong>Net par jour d’activité</strong><span class="legend-avg">Moyenne : 22 307 FCFA par jour</span></div>
-          <svg role="img" aria-label="Net par jour d’activité, septembre 2026 : 22 jours, moyenne 22 307 FCFA par jour" viewBox="0 0 560 150"><line class="grid-line" x1="8" y1="126" x2="552" y2="126"/><rect class="bar" x="8.0" y="67.4" width="16" height="58.6" rx="3"><title>Jour d’activité 1</title></rect><rect class="bar" x="33.1" y="81.1" width="16" height="44.9" rx="3"><title>Jour d’activité 2</title></rect><rect class="bar" x="58.3" y="100.1" width="16" height="25.9" rx="3"><title>Jour d’activité 3</title></rect><rect class="bar" x="83.4" y="50.4" width="16" height="75.6" rx="3"><title>Jour d’activité 4</title></rect><rect class="bar" x="108.6" y="63.3" width="16" height="62.7" rx="3"><title>Jour d’activité 5</title></rect><rect class="bar" x="133.7" y="70.4" width="16" height="55.6" rx="3"><title>Jour d’activité 6</title></rect><rect class="bar" x="158.9" y="23.6" width="16" height="102.4" rx="3"><title>Jour d’activité 7</title></rect><rect class="bar" x="184.0" y="70.5" width="16" height="55.5" rx="3"><title>Jour d’activité 8</title></rect><rect class="bar" x="209.1" y="68.4" width="16" height="57.6" rx="3"><title>Jour d’activité 9</title></rect><rect class="bar" x="234.3" y="35.9" width="16" height="90.1" rx="3"><title>Jour d’activité 10</title></rect><rect class="bar" x="259.4" y="65.6" width="16" height="60.4" rx="3"><title>Jour d’activité 11</title></rect><rect class="bar" x="284.6" y="39.7" width="16" height="86.3" rx="3"><title>Jour d’activité 12</title></rect><rect class="bar" x="309.7" y="22.8" width="16" height="103.2" rx="3"><title>Jour d’activité 13</title></rect><rect class="bar" x="334.9" y="68.4" width="16" height="57.6" rx="3"><title>Jour d’activité 14</title></rect><rect class="bar" x="360.0" y="92.5" width="16" height="33.5" rx="3"><title>Jour d’activité 15</title></rect><rect class="bar" x="385.1" y="55.1" width="16" height="70.9" rx="3"><title>Jour d’activité 16</title></rect><rect class="bar" x="410.3" y="59.3" width="16" height="66.7" rx="3"><title>Jour d’activité 17</title></rect><rect class="bar" x="435.4" y="62.6" width="16" height="63.4" rx="3"><title>Jour d’activité 18</title></rect><rect class="bar" x="460.6" y="48.1" width="16" height="77.9" rx="3"><title>Jour d’activité 19</title></rect><rect class="bar" x="485.7" y="61.9" width="16" height="64.1" rx="3"><title>Jour d’activité 20</title></rect><rect class="bar" x="510.9" y="52.9" width="16" height="73.1" rx="3"><title>Jour d’activité 21</title></rect><rect class="bar" x="536.0" y="88.8" width="16" height="37.2" rx="3"><title>Jour d’activité 22</title></rect><line x1="8" y1="61.3" x2="552" y2="61.3" class="avg-line" stroke-width="2" stroke-dasharray="5 4"/><text x="8" y="144">1 sept.</text><text x="552" y="144" text-anchor="end">30 sept.</text></svg>
-        </div>
-        <div class="table-wrap" tabindex="0" role="region" aria-label="Derniers relevés journaliers">
-          <table class="table num">
-            <thead><tr><th scope="col">Date</th><th scope="col" class="r">Recette</th><th scope="col" class="r">Dépenses</th><th scope="col" class="r">Net</th></tr></thead>
-            <tbody><tr><td>25 sept.</td><td class="r">32 773</td><td class="r">10 925</td><td class="r"><strong>21 848</strong></td></tr><tr><td>26 sept.</td><td class="r">43 854</td><td class="r">17 000</td><td class="r"><strong>26 854</strong></td></tr><tr><td>28 sept.</td><td class="r">36 050</td><td class="r">13 940</td><td class="r"><strong>22 110</strong></td></tr><tr><td>29 sept.</td><td class="r">41 568</td><td class="r">16 357</td><td class="r"><strong>25 211</strong></td></tr><tr><td>30 sept.</td><td class="r">21 160</td><td class="r">8 320</td><td class="r"><strong>12 840</strong></td></tr></tbody>
-          </table>
-        </div>
+    <figure class="dash" data-reveal>
+      <div class="dash-head"><div><strong>Tableau de bord investisseur</strong><span>Un véhicule exploité par FMB · septembre 2026</span></div><span class="chip chip--accent">Aperçu</span></div>
+      <div class="kpis">
+        <div class="kpi"><span>Recette</span><strong class="num">772 505</strong><small>FCFA</small></div>
+        <div class="kpi"><span>Dépenses</span><strong class="num">281 759</strong><small>FCFA</small></div>
+        <div class="kpi kpi--accent"><span>Net versé</span><strong class="num">490 746</strong><small>FCFA</small></div>
+        <div class="kpi"><span>Activité</span><strong class="num">22</strong><small>jours</small></div>
       </div>
-      <p class="disclaimer">Données réelles d’un véhicule exploité par FMB, présentées sans information personnelle. Les performances passées ne préjugent pas des performances futures.</p>
-    </div>
+      <div class="dash-chart">
+        <div class="dash-chart-head"><strong>Net par jour d’activité</strong><span class="legend-avg">Moyenne : 22 307 FCFA par jour</span></div>
+        <svg role="img" aria-label="Net par jour d’activité, septembre 2026 : 22 jours, moyenne 22 307 FCFA par jour" viewBox="0 0 560 150"><line class="grid-line" x1="8" y1="126" x2="552" y2="126"/><rect class="bar" x="8.0" y="67.4" width="16" height="58.6" rx="3"><title>Jour d’activité 1</title></rect><rect class="bar" x="33.1" y="81.1" width="16" height="44.9" rx="3"><title>Jour d’activité 2</title></rect><rect class="bar" x="58.3" y="100.1" width="16" height="25.9" rx="3"><title>Jour d’activité 3</title></rect><rect class="bar" x="83.4" y="50.4" width="16" height="75.6" rx="3"><title>Jour d’activité 4</title></rect><rect class="bar" x="108.6" y="63.3" width="16" height="62.7" rx="3"><title>Jour d’activité 5</title></rect><rect class="bar" x="133.7" y="70.4" width="16" height="55.6" rx="3"><title>Jour d’activité 6</title></rect><rect class="bar" x="158.9" y="23.6" width="16" height="102.4" rx="3"><title>Jour d’activité 7</title></rect><rect class="bar" x="184.0" y="70.5" width="16" height="55.5" rx="3"><title>Jour d’activité 8</title></rect><rect class="bar" x="209.1" y="68.4" width="16" height="57.6" rx="3"><title>Jour d’activité 9</title></rect><rect class="bar" x="234.3" y="35.9" width="16" height="90.1" rx="3"><title>Jour d’activité 10</title></rect><rect class="bar" x="259.4" y="65.6" width="16" height="60.4" rx="3"><title>Jour d’activité 11</title></rect><rect class="bar" x="284.6" y="39.7" width="16" height="86.3" rx="3"><title>Jour d’activité 12</title></rect><rect class="bar" x="309.7" y="22.8" width="16" height="103.2" rx="3"><title>Jour d’activité 13</title></rect><rect class="bar" x="334.9" y="68.4" width="16" height="57.6" rx="3"><title>Jour d’activité 14</title></rect><rect class="bar" x="360.0" y="92.5" width="16" height="33.5" rx="3"><title>Jour d’activité 15</title></rect><rect class="bar" x="385.1" y="55.1" width="16" height="70.9" rx="3"><title>Jour d’activité 16</title></rect><rect class="bar" x="410.3" y="59.3" width="16" height="66.7" rx="3"><title>Jour d’activité 17</title></rect><rect class="bar" x="435.4" y="62.6" width="16" height="63.4" rx="3"><title>Jour d’activité 18</title></rect><rect class="bar" x="460.6" y="48.1" width="16" height="77.9" rx="3"><title>Jour d’activité 19</title></rect><rect class="bar" x="485.7" y="61.9" width="16" height="64.1" rx="3"><title>Jour d’activité 20</title></rect><rect class="bar" x="510.9" y="52.9" width="16" height="73.1" rx="3"><title>Jour d’activité 21</title></rect><rect class="bar" x="536.0" y="88.8" width="16" height="37.2" rx="3"><title>Jour d’activité 22</title></rect><line x1="8" y1="61.3" x2="552" y2="61.3" class="avg-line" stroke-width="2" stroke-dasharray="5 4"/><text x="8" y="144">1 sept.</text><text x="552" y="144" text-anchor="end">30 sept.</text></svg>
+      </div>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Derniers relevés journaliers">
+        <table class="table num">
+          <thead><tr><th scope="col">Date</th><th scope="col" class="r">Recette</th><th scope="col" class="r">Dépenses</th><th scope="col" class="r">Net</th></tr></thead>
+          <tbody><tr><td>25 sept.</td><td class="r">32 773</td><td class="r">10 925</td><td class="r"><strong>21 848</strong></td></tr><tr><td>26 sept.</td><td class="r">43 854</td><td class="r">17 000</td><td class="r"><strong>26 854</strong></td></tr><tr><td>28 sept.</td><td class="r">36 050</td><td class="r">13 940</td><td class="r"><strong>22 110</strong></td></tr><tr><td>29 sept.</td><td class="r">41 568</td><td class="r">16 357</td><td class="r"><strong>25 211</strong></td></tr><tr><td>30 sept.</td><td class="r">21 160</td><td class="r">8 320</td><td class="r"><strong>12 840</strong></td></tr></tbody>
+        </table>
+      </div>
+      <figcaption class="disclaimer">Données réelles d’un véhicule exploité par FMB, sans information personnelle. Les performances passées ne préjugent pas des performances futures.</figcaption>
+    </figure>
   </div>
 </section>
-<section class="section" aria-labelledby="inv-how">
+
+<section class="section section--soft" aria-labelledby="inv-how">
   <div class="container">
-    <div class="section-head" data-reveal><span class="eyebrow">Le principe</span><h2 id="inv-how">Un suivi transparent, véhicule par véhicule</h2></div>
-    <ol class="steps steps--light">
-      <li class="step" data-reveal><h3>Vous nous contactez</h3><p>Les modalités de participation vous sont communiquées sur demande, par WhatsApp ou par téléphone.</p></li>
-      <li class="step" data-reveal><h3>FMB exploite le véhicule</h3><p>Location, chauffeur ou plateforme : notre équipe gère l’exploitation et l’entretien au quotidien.</p></li>
-      <li class="step" data-reveal><h3>Vous suivez l’activité</h3><p>Recettes, dépenses et versements sont consultables dans votre tableau de bord investisseur.</p></li>
+    <div class="sec-head">
+  <div>
+    <span class="eyebrow">Le principe</span>
+    <h2 id="inv-how">Trois étapes, un suivi continu</h2>
+    
+  </div>
+  
+</div>
+    <ol class="steps">
+      <li class="step" data-reveal><h3>Vous nous contactez</h3><p>Les modalités de participation vous sont communiquées sur demande.</p></li>
+      <li class="step" data-reveal><h3>FMB exploite le véhicule</h3><p>Location, chauffeur ou plateforme : nous gérons l’exploitation et l’entretien.</p></li>
+      <li class="step" data-reveal><h3>Vous suivez l’activité</h3><p>Recettes, dépenses et versements dans votre tableau de bord.</p></li>
     </ol>
   </div>
 </section>
-<section class="section cta-section lg" aria-labelledby="cta-title">
+
+<section class="section" aria-labelledby="cta-title">
   <div class="container">
-    <div class="cta-band" data-reveal>
-      <div class="stack">
-        <h2 id="cta-title">Envie d’en savoir plus ?</h2>
-        <p>Demandez les modalités de participation et un accès au tableau de bord : nous vous répondons directement.</p>
-        <div class="cluster">
-          <a class="btn btn--cta" href="https://wa.me/221776893369" target="_blank" rel="noopener"><svg class="i i-whatsapp" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>Écrire sur WhatsApp</a>
-          <a class="btn btn--ghost-light lg" href="tel:+221776893369"><svg class="i i-phone" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>Appeler</a>
-        </div>
-      </div>
-      <ul class="contact-list lg">
-        <li><svg class="i i-phone" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg><div><span>Téléphone et WhatsApp</span><a href="tel:+221776893369">+221 77 689 33 69</a></div></li>
-        <li><svg class="i i-mail" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg><div><span>E-mail</span><a href="mailto:fmb.transmobilite@gmail.com">fmb.transmobilite@gmail.com</a></div></li>
-        <li><svg class="i i-pin" aria-hidden="true" focusable="false"><use href="#i-pin"/></svg><div><span>Adresse</span><strong>Yeumbeul Nord, Cité Asecna, Quartier Moussa Sall, N°A 28</strong></div></li>
-      </ul>
+    <div class="cta" data-reveal>
+      <div><h2 id="cta-title">Envie d’en savoir plus ?</h2><p>Demandez les modalités de participation et un accès au tableau de bord.</p></div>
+      <div class="actions"><a class="btn btn--light" href="https://wa.me/221776893369?text=Bonjour%20FMB%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20l%E2%80%99investissement%20participatif%20et%20l%E2%80%99acc%C3%A8s%20au%20tableau%20de%20bord." target="_blank" rel="noopener">Demander les modalités</a><a class="btn btn--ghost" href="contact.html">Nous contacter</a></div>
     </div>
   </div>
 </section>
@@ -144,64 +144,52 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a class="brand" href="index.html">
-          <img src="assets/img/logo-96.webp" width="46" height="46" alt="" loading="lazy">
-          <span><span class="brand-name">FMB Transport</span><span class="brand-sub">Trans-Mobilité Services</span></span>
+          <img src="assets/img/logo-96.webp" width="38" height="38" alt="" loading="lazy">
+          <span class="brand-name">FMB Transport</span>
         </a>
-        <p class="lg">Voitures avec chauffeur à Dakar, transfert aéroport AIBD, location longue durée, vente de véhicules dédouanés et gestion de véhicules.</p>
-        <div class="cluster lg">
-          <a class="btn btn--wa btn--sm" href="https://wa.me/221776893369" target="_blank" rel="noopener"><svg class="i i-whatsapp" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>WhatsApp</a>
-          <a class="btn btn--ghost-light btn--sm" href="tel:+221776893369"><svg class="i i-phone" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>Appeler</a>
-        </div>
+        <p>FMB Trans-Mobilité Services SARL. Chauffeur privé, transfert aéroport, vente de véhicules dédouanés et gestion de flotte à Dakar.</p>
       </div>
-      <nav class="lg" aria-label="Transport">
+      <nav aria-label="Transport">
         <h2>Transport</h2>
         <ul>
-          <li><a href="reservation.html?service=journee">Chauffeur à la journée</a></li>
-          <li><a href="reservation.html?service=duree">Chauffeur plusieurs jours</a></li>
-          <li><a href="reservation.html?service=aeroport">Transfert aéroport AIBD</a></li>
+          <li><a href="chauffeur.html">Chauffeur privé</a></li>
+          <li><a href="reservation.html?service=aeroport">Transfert aéroport</a></li>
           <li><a href="reservation.html?service=longue">Location longue durée</a></li>
-          <li><a href="reservation.html?service=ville">Trajet en ville</a></li>
+          <li><a href="reservation.html">Réserver</a></li>
         </ul>
       </nav>
       <nav aria-label="Entreprise">
         <h2>FMB</h2>
         <ul>
           <li><a href="vehicules.html">Véhicules à vendre</a></li>
-          <li><a href="services.html">Tous les services</a></li>
-          <li><a href="services.html#proprietaires">Confier mon véhicule</a></li>
+          <li><a href="services.html">Services</a></li>
           <li><a href="investir.html">Investir</a></li>
-          <li><a href="index.html#faq">Questions fréquentes</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
       <div>
-        <h2>Contact</h2>
+        <h2>Nous joindre</h2>
         <ul>
-          <li class="lg"><a href="tel:+221776893369">+221 77 689 33 69</a></li>
+          <li><a href="tel:+221776893369">+221 77 689 33 69</a></li>
           <li><a href="mailto:fmb.transmobilite@gmail.com">fmb.transmobilite@gmail.com</a></li>
-          <li>Yeumbeul Nord, Cité Asecna, Quartier Moussa Sall, N°A 28</li>
-          <li><a href="contact.html">Nous écrire</a></li>
+          <li>Yeumbeul Nord, Dakar</li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© <span data-year>2026</span> FMB Trans-Mobilité Services SARL · RC : SN DKR 2025 B 31716 · NINEA : 012385862</span>
-      <span class="cluster"><a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a><a href="conditions.html">Conditions d’utilisation</a></span>
+      <span>© <span data-year>2026</span> FMB Trans-Mobilité Services SARL · RC SN DKR 2025 B 31716 · NINEA 012385862</span>
+      <nav aria-label="Informations légales"><a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a><a href="conditions.html">Conditions</a></nav>
+      <p class="footer-note">Version de démonstration : les annonces de vente et les avis clients sont des exemples.</p>
     </div>
   </div>
-<nav class="tabbar no-print" aria-label="Navigation rapide">
-    <a href="index.html" data-tab="home"><svg class="i i-home" aria-hidden="true" focusable="false"><use href="#i-home"/></svg><span>Accueil</span></a>
-    <a href="vehicules.html" data-tab="vehicles"><svg class="i i-car" aria-hidden="true" focusable="false"><use href="#i-car"/></svg><span>Véhicules</span></a>
-    <a href="tel:+221776893369"><svg class="i i-phone" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg><span>Appeler</span></a>
-    <a href="vehicules.html?favoris=1" data-tab="favs"><svg class="i i-heart" aria-hidden="true" focusable="false"><use href="#i-heart"/></svg><span>Favoris</span><span class="badge-count" data-fav-count hidden>0</span></a>
-    <a class="is-wa" href="https://wa.me/221776893369" target="_blank" rel="noopener"><svg class="i i-whatsapp" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg><span>WhatsApp</span></a>
-  </nav>
-  <nav class="mobile-bar no-print" aria-label="Actions rapides">
-    <a href="tel:+221776893369"><svg class="i i-phone" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>Appeler</a>
-    <a class="is-wa" href="https://wa.me/221776893369" target="_blank" rel="noopener"><svg class="i i-whatsapp" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>WhatsApp</a>
-    <a class="is-cta" href="reservation.html">Réserver</a>
-  </nav>
-  <a class="wa-float no-print" href="https://wa.me/221776893369" target="_blank" rel="noopener" aria-label="Écrire sur WhatsApp"><svg class="i i-whatsapp" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg></a>
 </footer>
+<nav class="tabbar" aria-label="Navigation rapide">
+  <a href="index.html" data-tab="home"><svg class="i i-home" aria-hidden="true" focusable="false"><use href="#i-home"/></svg><span>Accueil</span></a>
+  <a href="chauffeur.html" data-tab="chauffeur"><svg class="i i-user" aria-hidden="true" focusable="false"><use href="#i-user"/></svg><span>Chauffeur</span></a>
+  <a href="vehicules.html" data-tab="vehicles"><svg class="i i-car" aria-hidden="true" focusable="false"><use href="#i-car"/></svg><span>Véhicules</span></a>
+  <a href="vehicules.html?favoris=1" data-tab="favs"><svg class="i i-heart" aria-hidden="true" focusable="false"><use href="#i-heart"/></svg><span>Favoris</span><span class="badge-count" data-fav-count hidden>0</span></a>
+  <a href="contact.html" data-tab="contact"><svg class="i i-message" aria-hidden="true" focusable="false"><use href="#i-message"/></svg><span>Contact</span></a>
+</nav>
 <div class="toasts" role="status" aria-live="polite" data-toasts></div>
 </body>
 </html>

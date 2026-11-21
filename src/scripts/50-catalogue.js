@@ -67,15 +67,15 @@ FMB.register('catalogue', function () {
 
   // Panneau de filtres sur mobile
   var opener = $('[data-filters-open]', root);
-  var backdrop = null;
+  var backdrop = null, sheetMode = window.matchMedia('(max-width: 960px)');   // filtres en panneau sous 960 px
   function drawer(open) {
     form.classList.toggle('is-open', open); document.body.classList.toggle('nav-open', open);
     // Sur téléphone, le panneau monte du bas : un voile derrière permet de le fermer d'un toucher
-    if (open && FMB.mobile.matches && !backdrop) { backdrop = document.createElement('div'); backdrop.className = 'sheet-backdrop'; backdrop.addEventListener('click', function () { drawer(false); }); document.body.appendChild(backdrop); }
+    if (open && sheetMode.matches && !backdrop) { backdrop = document.createElement('div'); backdrop.className = 'sheet-backdrop'; backdrop.addEventListener('click', function () { drawer(false); }); document.body.appendChild(backdrop); }
     if (!open && backdrop) { backdrop.parentNode.removeChild(backdrop); backdrop = null; }
     if (!open && opener) { opener.focus({ preventScroll: true }); countEl.scrollIntoView({ block: 'start' }); }
   }
-  if (opener) opener.addEventListener('click', function () { drawer(true); if (!FMB.mobile.matches) $('input', form).focus(); else $('[data-filters-close]', form).focus({ preventScroll: true }); });
+  if (opener) opener.addEventListener('click', function () { drawer(true); if (!sheetMode.matches) $('input', form).focus(); else $('[data-filters-close]', form).focus({ preventScroll: true }); });
   $$('[data-filters-close]', root).forEach(function (b) { b.addEventListener('click', function () { drawer(false); }); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && form.classList.contains('is-open')) drawer(false); });
   apply();

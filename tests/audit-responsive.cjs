@@ -8,7 +8,7 @@ const axe = fs.readFileSync(require.resolve('axe-core/axe.min.js'), 'utf8');
 const ONLY = process.env.VPS ? process.env.VPS.split(',').map(Number) : null;
 const SCHEMES = (process.env.SCHEMES || 'light').split(',');
 const VPS = [[320, 568], [360, 740], [390, 844], [430, 932], [768, 1024], [1024, 768], [1024, 1366], [1280, 800], [1440, 900], [1920, 1080], [2560, 1440], [3840, 2160]];
-const PAGES = ['index.html', 'reservation.html?service=aeroport', 'vehicules.html', 'vehicules/renault-qm3-noir.html', 'vehicules/toyota-land-cruiser-prado-2014.html', 'services.html', 'investir.html', 'contact.html', 'mentions-legales.html', 'conditions.html'];
+const PAGES = ['index.html', 'chauffeur.html', 'reservation.html?service=aeroport', 'vehicules.html', 'vehicules/renault-qm3-noir.html', 'vehicules/toyota-land-cruiser-prado-2014.html', 'services.html', 'investir.html', 'contact.html', 'mentions-legales.html', 'conditions.html'];
 (async () => {
   const b = await chromium.launch(); const issues = {}; const add = (k, v) => { (issues[k] = issues[k] || new Set()).add(v); };
   for (const scheme of SCHEMES) for (const [w, h] of VPS.filter(([w]) => !ONLY || ONLY.includes(w))) {

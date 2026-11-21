@@ -4,7 +4,7 @@ export const fmtInt = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '\u00a0'
 export const fmtPrice = (n) => `${fmtInt(n)}\u00a0FCFA`;
 export const waLink = (site, text) => `https://wa.me/${site.whatsapp}${text ? `?text=${encodeURIComponent(text)}` : ''}`;
 export const vehicleName = (v) => `${v.make} ${v.model}`;
-/** Texte en deux versions : la longue sur tablette/ordinateur, la courte sur téléphone (≤ 640 px). */
+/** Texte en deux versions : la longue sur tablette/ordinateur, la courte sur téléphone (≤ 720 px). */
 export const rs = (long, short) => `<span class="lg">${long}</span><span class="sm">${short}</span>`;
 
 const imgPath = (ctx, key, w, ext) => `${ctx.root}assets/img/${key}-${w}.${ext}`;
@@ -35,6 +35,6 @@ export function picture(ctx, key, alt, { sizes = '100vw', eager = false, priorit
   const load = priority ? 'fetchpriority="high"' : (eager ? 'decoding="async"' : 'loading="lazy" decoding="async"');
   const img = `<img${attrs ? ` ${attrs}` : ''} src="${imgPath(ctx, key, big, 'webp')}" srcset="${srcset(ctx, key, 'webp', max)}" sizes="${sizes}" width="${big}" height="${h}" alt="${esc(alt)}" ${load}>`;
   // avif: false → simple <img> WebP (miniatures : gain AVIF négligeable, HTML plus léger)
-  const phone = skipPhone ? `<source media="(max-width: 640px)" srcset="${BLANK}">` : '';
+  const phone = skipPhone ? `<source media="(max-width: 720px)" srcset="${BLANK}">` : '';
   return avif ? `<picture>${phone}<source type="image/avif" srcset="${srcset(ctx, key, 'avif', max)}" sizes="${sizes}">${img}</picture>` : img;
 }

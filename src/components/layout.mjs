@@ -2,8 +2,10 @@
 import { icon, takeSprite } from './icons.mjs';
 import { esc, waLink } from './util.mjs';
 
+// Navigation principale : une entrée par univers, dans l'ordre du parcours visiteur.
 const NAV = [
-  { id: 'home', href: 'index.html', label: 'Réserver' },
+  { id: 'home', href: 'index.html', label: 'Accueil' },
+  { id: 'chauffeur', href: 'chauffeur.html', label: 'Chauffeur privé' },
   { id: 'vehicles', href: 'vehicules.html', label: 'Véhicules à vendre' },
   { id: 'services', href: 'services.html', label: 'Services' },
   { id: 'invest', href: 'investir.html', label: 'Investir' },
@@ -12,30 +14,29 @@ const NAV = [
 
 function header(ctx, page) {
   const { site, root } = ctx;
+  const nav = page.nav === 'reservation' ? 'chauffeur' : page.nav;
   return `
 <a class="skip-link" href="#contenu">Aller au contenu</a>
-${site.demoMode ? `<aside class="demo-bar" data-demo-bar aria-label="Information sur cette version"><div class="container"><p><strong>Version de démonstration</strong><span class="demo-long"> — les annonces de vente, leurs prix et les avis clients sont des exemples.</span><span class="demo-short"> · annonces et avis d’exemple</span></p><button type="button" data-demo-close aria-label="Masquer ce message">${icon('x')}</button></div></aside>` : ''}
 <header class="site-header" data-header>
   <div class="container">
     <a class="brand" href="${root}index.html">
-      <img src="${root}assets/img/logo-96.webp" srcset="${root}assets/img/logo-96.webp 1x, ${root}assets/img/logo-192.webp 2x" width="46" height="46" alt="" decoding="async">
-      <span><span class="brand-name">FMB Transport</span><span class="brand-sub">${esc(site.tagline)}</span><span class="sr-only"> — accueil</span></span>
+      <img src="${root}assets/img/logo-96.webp" srcset="${root}assets/img/logo-96.webp 1x, ${root}assets/img/logo-192.webp 2x" width="38" height="38" alt="" decoding="async">
+      <span class="brand-name">FMB Transport<span class="sr-only"> — accueil</span></span>
     </a>
     <nav class="main-nav" id="menu" aria-label="Navigation principale" data-nav>
       <ul>
-        ${NAV.map((n) => `<li><a href="${root}${n.href}"${page.nav === n.id ? ' aria-current="page"' : ''}>${n.label}</a></li>`).join('\n        ')}
+        ${NAV.map((n) => `<li><a href="${root}${n.href}"${nav === n.id ? ' aria-current="page"' : ''}>${n.label}</a></li>`).join('\n        ')}
       </ul>
       <div class="nav-extra">
-        <a class="btn btn--cta btn--block" href="${root}reservation.html">Réserver un chauffeur</a>
-        <a class="btn btn--outline btn--block" href="${root}vehicules.html?favoris=1">${icon('heart')}Mes favoris</a>
-        <a class="btn btn--outline btn--block" href="tel:${site.phoneE164}">${icon('phone')}${site.phoneDisplay}</a>
+        <a class="btn btn--block" href="${root}reservation.html">Réserver un chauffeur</a>
+        <a class="btn btn--secondary btn--block" href="tel:${site.phoneE164}">${icon('phone')}${site.phoneDisplay}</a>
       </div>
     </nav>
     <div class="header-actions">
       <a class="header-phone" href="tel:${site.phoneE164}" aria-label="Appeler le ${site.phoneDisplay}">${icon('phone')}<span>${site.phoneDisplay}</span></a>
-      <a class="icon-btn header-fav" href="${root}vehicules.html?favoris=1" aria-label="Mes véhicules favoris">${icon('heart')}<span class="badge-count" data-fav-count hidden>0</span></a>
-      <a class="btn btn--cta btn--sm" href="${root}reservation.html">Réserver</a>
-      <button class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="menu" data-nav-toggle><span class="sr-only">Ouvrir le menu</span>${icon('menu')}</button>
+      <a class="icon-btn icon-btn--plain header-fav" href="${root}vehicules.html?favoris=1" aria-label="Mes véhicules favoris">${icon('heart')}<span class="badge-count" data-fav-count hidden>0</span></a>
+      <a class="btn btn--sm" href="${root}reservation.html">Réserver</a>
+      <button class="icon-btn icon-btn--plain nav-toggle" type="button" aria-expanded="false" aria-controls="menu" data-nav-toggle><span class="sr-only">Ouvrir le menu</span>${icon('menu')}</button>
     </div>
   </div>
 </header>`;
@@ -44,75 +45,64 @@ ${site.demoMode ? `<aside class="demo-bar" data-demo-bar aria-label="Information
 function footer(ctx, page) {
   const { site, root } = ctx;
   const a = site.address;
+  const tab = (id, href, ico, label, extra = '') => `<a href="${root}${href}" data-tab="${id}"${page.nav === id || (id === 'chauffeur' && page.nav === 'reservation') ? ' aria-current="page"' : ''}>${icon(ico)}<span>${label}</span>${extra}</a>`;
   return `
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
         <a class="brand" href="${root}index.html">
-          <img src="${root}assets/img/logo-96.webp" width="46" height="46" alt="" loading="lazy">
-          <span><span class="brand-name">FMB Transport</span><span class="brand-sub">${esc(site.tagline)}</span></span>
+          <img src="${root}assets/img/logo-96.webp" width="38" height="38" alt="" loading="lazy">
+          <span class="brand-name">FMB Transport</span>
         </a>
-        <p class="lg">Voitures avec chauffeur à Dakar, transfert aéroport AIBD, location longue durée, vente de véhicules dédouanés et gestion de véhicules.</p>
-        <div class="cluster lg">
-          <a class="btn btn--wa btn--sm" href="${waLink(site)}" target="_blank" rel="noopener">${icon('whatsapp')}WhatsApp</a>
-          <a class="btn btn--ghost-light btn--sm" href="tel:${site.phoneE164}">${icon('phone')}Appeler</a>
-        </div>
+        <p>${esc(site.legalName)}. Chauffeur privé, transfert aéroport, vente de véhicules dédouanés et gestion de flotte à Dakar.</p>
       </div>
-      <nav class="lg" aria-label="Transport">
+      <nav aria-label="Transport">
         <h2>Transport</h2>
         <ul>
-          <li><a href="${root}reservation.html?service=journee">Chauffeur à la journée</a></li>
-          <li><a href="${root}reservation.html?service=duree">Chauffeur plusieurs jours</a></li>
-          <li><a href="${root}reservation.html?service=aeroport">Transfert aéroport AIBD</a></li>
+          <li><a href="${root}chauffeur.html">Chauffeur privé</a></li>
+          <li><a href="${root}reservation.html?service=aeroport">Transfert aéroport</a></li>
           <li><a href="${root}reservation.html?service=longue">Location longue durée</a></li>
-          <li><a href="${root}reservation.html?service=ville">Trajet en ville</a></li>
+          <li><a href="${root}reservation.html">Réserver</a></li>
         </ul>
       </nav>
       <nav aria-label="Entreprise">
         <h2>FMB</h2>
         <ul>
           <li><a href="${root}vehicules.html">Véhicules à vendre</a></li>
-          <li><a href="${root}services.html">Tous les services</a></li>
-          <li><a href="${root}services.html#proprietaires">Confier mon véhicule</a></li>
+          <li><a href="${root}services.html">Services</a></li>
           <li><a href="${root}investir.html">Investir</a></li>
-          <li><a href="${root}index.html#faq">Questions fréquentes</a></li>
+          <li><a href="${root}contact.html">Contact</a></li>
         </ul>
       </nav>
       <div>
-        <h2>Contact</h2>
+        <h2>Nous joindre</h2>
         <ul>
-          <li class="lg"><a href="tel:${site.phoneE164}">${site.phoneDisplay}</a></li>
+          <li><a href="tel:${site.phoneE164}">${site.phoneDisplay}</a></li>
           <li><a href="mailto:${site.email}">${site.email}</a></li>
-          <li>${esc(a.locality)}, ${esc(a.street)}</li>
-          <li><a href="${root}contact.html">Nous écrire</a></li>
+          <li>${esc(a.locality)}, Dakar</li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© <span data-year>${new Date().getFullYear()}</span> ${esc(site.legalName)} · RC : ${site.rc} · NINEA : ${site.ninea}</span>
-      <span class="cluster"><a href="${root}mentions-legales.html">Mentions légales</a><a href="${root}confidentialite.html">Confidentialité</a><a href="${root}conditions.html">Conditions d’utilisation</a></span>
+      <span>© <span data-year>${new Date().getFullYear()}</span> ${esc(site.legalName)} · RC ${site.rc} · NINEA ${site.ninea}</span>
+      <nav aria-label="Informations légales"><a href="${root}mentions-legales.html">Mentions légales</a><a href="${root}confidentialite.html">Confidentialité</a><a href="${root}conditions.html">Conditions</a></nav>
+      ${site.demoMode ? '<p class="footer-note">Version de démonstration : les annonces de vente et les avis clients sont des exemples.</p>' : ''}
     </div>
   </div>
-<nav class="tabbar no-print" aria-label="Navigation rapide">
-    <a href="${root}index.html" data-tab="home"${page.nav === 'home' ? ' aria-current="page"' : ''}>${icon('home')}<span>Accueil</span></a>
-    <a href="${root}vehicules.html" data-tab="vehicles"${page.nav === 'vehicles' ? ' aria-current="page"' : ''}>${icon('car')}<span>Véhicules</span></a>
-    <a href="tel:${site.phoneE164}">${icon('phone')}<span>Appeler</span></a>
-    <a href="${root}vehicules.html?favoris=1" data-tab="favs">${icon('heart')}<span>Favoris</span><span class="badge-count" data-fav-count hidden>0</span></a>
-    <a class="is-wa" href="${waLink(site)}" target="_blank" rel="noopener">${icon('whatsapp')}<span>WhatsApp</span></a>
-  </nav>
-  <nav class="mobile-bar no-print" aria-label="Actions rapides">
-    <a href="tel:${site.phoneE164}">${icon('phone')}Appeler</a>
-    <a class="is-wa" href="${waLink(site)}" target="_blank" rel="noopener">${icon('whatsapp')}WhatsApp</a>
-    <a class="is-cta" href="${root}reservation.html">Réserver</a>
-  </nav>
-  <a class="wa-float no-print" href="${waLink(site)}" target="_blank" rel="noopener" aria-label="Écrire sur WhatsApp">${icon('whatsapp')}</a>
 </footer>
+<nav class="tabbar" aria-label="Navigation rapide">
+  ${tab('home', 'index.html', 'home', 'Accueil')}
+  ${tab('chauffeur', 'chauffeur.html', 'user', 'Chauffeur')}
+  ${tab('vehicles', 'vehicules.html', 'car', 'Véhicules')}
+  ${tab('favs', 'vehicules.html?favoris=1', 'heart', 'Favoris', '<span class="badge-count" data-fav-count hidden>0</span>')}
+  ${tab('contact', 'contact.html', 'message', 'Contact')}
+</nav>
 <div class="toasts" role="status" aria-live="polite" data-toasts></div>`;
 }
 
-export function breadcrumb(ctx, items, light = false) {
-  return `<nav class="breadcrumb${light ? ' breadcrumb--light' : ''}" aria-label="Fil d’Ariane"><ol>
+export function breadcrumb(ctx, items) {
+  return `<nav class="breadcrumb" aria-label="Fil d’Ariane"><ol>
     <li><a href="${ctx.root}index.html">Accueil</a></li>
     ${items.map((it, i) => i === items.length - 1 ? `<li><span aria-current="page">${esc(it.label)}</span></li>` : `<li><a href="${ctx.root}${it.href}">${esc(it.label)}</a></li>`).join('')}
   </ol></nav>`;
@@ -148,9 +138,8 @@ export function layout(ctx, page) {
 <meta name="description" content="${esc(page.description)}">
 ${page.noindex ? '<meta name="robots" content="noindex">' : ''}
 ${url ? `<link rel="canonical" href="${url}">` : ''}
-<meta name="theme-color" content="#ffffff" media="(max-width: 640px) and (prefers-color-scheme: light)">
-<meta name="theme-color" content="#111c29" media="(max-width: 640px) and (prefers-color-scheme: dark)">
-<meta name="theme-color" content="${site.themeColor}">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b131c" media="(prefers-color-scheme: dark)">
 <meta name="color-scheme" content="light dark">
 <meta name="format-detection" content="telephone=no">
 <meta property="og:type" content="website">
@@ -166,7 +155,6 @@ ${ogImg ? `<meta property="og:image" content="${ogImg}">` : ''}
 <link rel="apple-touch-icon" href="${root}assets/img/icon-180.png">
 <link rel="manifest" href="${root}manifest.webmanifest">
 <link rel="preload" href="${root}assets/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="${root}assets/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="${root}assets/css/${assets.css}">
 <script src="${root}assets/js/${assets.js}" defer></script>
 <script type="speculationrules">${JSON.stringify(speculation)}</script>
